@@ -1,0 +1,44 @@
+# Makefile for DVS901H
+# Copyright(C) 2005-2010 TaiTech Inc.
+
+# Cross Compile Tools
+CC 			:=  arm-hisiv100nptl-linux-gcc -g
+AR			:= arm-hisiv100nptl-linux-ar
+
+# Macro Of Platform
+CFLAGS		:= -DHI3511
+
+# Macro Of Header
+
+# Macro Of Library
+LDFLAGS		:=
+
+CFLAGS		:= -I./include -O2 -Wall
+
+# Object path configure
+OBJSPATH 	:= ./debug_HI3511
+OBJS 		:= $(wildcard $(OBJSPATH)/*.o)
+
+# Specific Rules
+.PHONY: all
+
+all:
+	$(if $(shell find $(OBJSPATH)), $(shell cd ./), $(shell mkdir $(OBJSPATH)))
+	
+	$(CC) -c mtd.c -o $(OBJSPATH)/mtd.o $(CFLAGS)
+	$(CC) -c crc32.c -o $(OBJSPATH)/crc32.o $(CFLAGS)
+
+	$(AR) -rcs $(OBJSPATH)/libmtd.a $(OBJS) $(LDFLAGS)
+	
+	cp $(OBJSPATH)/*.a ../libs_HI3511/
+	
+test:
+	$(if $(shell find $(OBJSPATH)), $(shell cd ./), $(shell mkdir $(OBJSPATH)))
+	
+	$(CC) -c mtd.c -o $(OBJSPATH)/mtd.o $(CFLAGS) -DTEST
+	$(CC) $(CFLAGS) $(OBJS) -o $(OBJSPATH)/mtd.out $(LDFLAGS)
+	
+clean: 
+	rm -f $(OBJSPATH)/*.o $(OBJSPATH)/*.a $(OBJSPATH)/*.out
+	rm -f *~
+	rmdir $(OBJSPATH)

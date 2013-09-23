@@ -1,0 +1,19 @@
+---- TLV320_FILE 匹配 (1 in 1 文件) ----
+Sample_comm.h (sample\common):#define TLV320_FILE "/dev/tlv320aic31"
+---- TLV320_FILE 搜索遇到错误 (15) ----
+以下15个文件不能被处理：
+\\192.168.100.156\Hi3518_SDK_V1.0.4.0\mpp\sample\hifb\res\0.bmp : 文件打不开。
+\\192.168.100.156\Hi3518_SDK_V1.0.4.0\mpp\sample\hifb\res\1.bmp : 文件打不开。
+\\192.168.100.156\Hi3518_SDK_V1.0.4.0\mpp\sample\tde\res\apple.bmp : 文件打不开。
+\\192.168.100.156\Hi3518_SDK_V1.0.4.0\mpp\sample\tde\res\applets.bmp : 文件打不开。
+\\192.168.100.156\Hi3518_SDK_V1.0.4.0\mpp\sample\tde\res\background.bmp : 文件打不开。
+\\192.168.100.156\Hi3518_SDK_V1.0.4.0\mpp\sample\tde\res\calendar.bmp : 文件打不开。
+\\192.168.100.156\Hi3518_SDK_V1.0.4.0\mpp\sample\hifb\res\cursor.bmp : 文件打不开。
+\\192.168.100.156\Hi3518_SDK_V1.0.4.0\mpp\sample\tde\res\foot.bmp : 文件打不开。
+\\192.168.100.156\Hi3518_SDK_V1.0.4.0\mpp\sample\tde\res\gimp.bmp : 文件打不开。
+\\192.168.100.156\Hi3518_SDK_V1.0.4.0\mpp\sample\tde\res\gmush.bmp : 文件打不开。
+\\192.168.100.156\Hi3518_SDK_V1.0.4.0\mpp\sample\tde\res\gsame.bmp : 文件打不开。
+\\192.168.100.156\Hi3518_SDK_V1.0.4.0\mpp\sample\tde\res\keys.bmp : 文件打不开。
+\\192.168.100.156\Hi3518_SDK_V1.0.4.0\mpp\sample\region\mm.bmp : 文件打不开。
+\\192.168.100.156\Hi3518_SDK_V1.0.4.0\mpp\mpp.IAB : 文件打不开。
+\\192.168.100.156\Hi3518_SDK_V1.0.4.0\mpp\mpp.IMB : 文件打不开。

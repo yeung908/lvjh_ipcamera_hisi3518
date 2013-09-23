@@ -1,0 +1,44 @@
+# Makefile for DVS901H
+# Copyright(C) 2005-2010 TaiTech Inc.
+
+# Cross Compile Tools
+CC 			:=  arm-hisiv100nptl-linux-gcc -g
+AR			:= arm-hisiv100nptl-linux-ar
+
+# Macro Of Platform
+CFLAGS		:= -DHI3511
+
+# Macro Of Header
+
+# Macro Of Function
+#CFLAGS		+= -DNET_SDK_DEBUG
+
+# Macro Of Library
+LDFLAGS	:=
+
+# Object path configure
+OBJSPATH 	:= ./debug_HI3511
+OBJS 		:= $(wildcard $(OBJSPATH)/*.o)
+
+# Specific Rules
+.PHONY: all
+
+all:
+	$(if $(shell find $(OBJSPATH)), $(shell cd ./), $(shell mkdir $(OBJSPATH)))
+	
+	$(CC) -c sendList.c -o $(OBJSPATH)/sendList.o $(CFLAGS)
+	$(CC) -c userList.c -o $(OBJSPATH)/userList.o $(CFLAGS)
+	$(CC) -c bitStream.c -o $(OBJSPATH)/bitStream.o $(CFLAGS)
+	$(CC) -c talkBack.c -o $(OBJSPATH)/talkBack.o $(CFLAGS)
+	$(CC) -c netSDK.c -o $(OBJSPATH)/netSDK.o $(CFLAGS)
+	$(CC) -c tcpNat.c -o $(OBJSPATH)/tcpNat.o $(CFLAGS)
+#	$(CC) -c p2pclient.c -o $(OBJSPATH)/p2pclient.o $(CFLAGS)
+	
+	$(AR) -rcs $(OBJSPATH)/libnetSDK.a $(OBJS) $(LDFLAGS)
+	
+	cp $(OBJSPATH)/*.a ../libs_HI3511/
+	
+clean: 
+	rm -f $(OBJSPATH)/*.o $(OBJSPATH)/*.a $(OBJSPATH)/*.out
+	rm -f *~
+	rmdir $(OBJSPATH)

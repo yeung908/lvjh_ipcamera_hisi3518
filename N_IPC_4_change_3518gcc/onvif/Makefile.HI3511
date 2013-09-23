@@ -1,0 +1,41 @@
+# Makefile for DVS901H
+# Copyright(C) 2005-2010 TaiTech Inc.
+
+# Cross Compile Tools
+CC 			:=  arm-hisiv100nptl-linux-gcc
+AR			:= arm-hisiv100nptl-linux-ar
+
+# Macro Of Platform
+
+# Macro Of Header
+
+# Macro Of Function
+
+# Macro Of Library
+LDFLAGS	:=
+
+# Object path configure
+OBJSPATH 	:= ./debug_HI3511
+OBJS 		:= $(wildcard $(OBJSPATH)/*.o)
+
+# Specific Rules
+.PHONY: all
+
+all:
+	$(if $(shell find $(OBJSPATH)), $(shell cd ./), $(shell mkdir $(OBJSPATH)))
+	
+	$(CC) -c soapServer.c -o $(OBJSPATH)/soapServer.o $(CFLAGS)
+	$(CC) -c onvifDiscovery.c -o $(OBJSPATH)/onvifDiscovery.o $(CFLAGS)
+	$(CC) -c onvifService.c -o $(OBJSPATH)/onvifService.o $(CFLAGS)
+	$(CC) -c libonvif.c -o $(OBJSPATH)/libonvif.o $(CFLAGS)
+	$(CC) -c gen_uuid.c -o $(OBJSPATH)/gen_uuid.o $(CFLAGS)
+	$(CC) -c onvif.c -o $(OBJSPATH)/onvif.o $(CFLAGS)
+	
+	$(AR) -rcs $(OBJSPATH)/libonvif.a $(OBJS) $(LDFLAGS)
+	
+	cp $(OBJSPATH)/*.a ../libs_HI3511/
+	
+clean: 
+	rm -f $(OBJSPATH)/*.o $(OBJSPATH)/*.a $(OBJSPATH)/*.out
+	rm -f *~
+	rmdir $(OBJSPATH)

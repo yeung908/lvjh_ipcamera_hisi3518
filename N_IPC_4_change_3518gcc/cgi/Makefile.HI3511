@@ -1,0 +1,41 @@
+# Makefile for DVS901H
+# Copyright(C) 2005-2010 TaiTech Inc.
+
+# Cross Compile Tools
+CC 			:=  arm-hisiv100nptl-linux-gcc -g
+AR			:= arm-hisiv100nptl-linux-ar
+
+# Macro Of Platform
+CFLAGS		:= 
+
+# Macro of Media Library
+LIBS 		:=	
+
+# Object path configure
+OBJSPATH 	:= ./debug_HI3511
+OBJS 		:= $(wildcard $(OBJSPATH)/*.o)
+
+# Specific Rules
+.PHONY: all
+
+all:
+	$(if $(shell find $(OBJSPATH)), $(shell cd ./), $(shell mkdir $(OBJSPATH)))
+
+	$(CC) -c cgivars.c -o $(OBJSPATH)/cgivars.o $(CFLAGS)
+
+	$(CC) -c ptzUpCtrl.c -o $(OBJSPATH)/ptzUpCtrl.o $(CFLAGS)
+	$(CC) -c ptzDownCtrl.c -o $(OBJSPATH)/ptzDownCtrl.o $(CFLAGS)
+	$(CC) -c ptzLeftCtrl.c -o $(OBJSPATH)/ptzLeftCtrl.o $(CFLAGS)
+	$(CC) -c ptzRightCtrl.c -o $(OBJSPATH)/ptzRightCtrl.o $(CFLAGS)
+	
+	@echo $(OBJS)
+
+	$(CC) $(CFLAGS) $(OBJSPATH)/cgivars.o $(OBJSPATH)/ptzUpCtrl.o -o $(OBJSPATH)/ptzUpCtrl.cgi $(LDFLAGS)
+	$(CC) $(CFLAGS) $(OBJSPATH)/cgivars.o $(OBJSPATH)/ptzDownCtrl.o -o $(OBJSPATH)/ptzDownCtrl.cgi $(LDFLAGS)
+	$(CC) $(CFLAGS) $(OBJSPATH)/cgivars.o $(OBJSPATH)/ptzLeftCtrl.o -o $(OBJSPATH)/ptzLeftCtrl.cgi $(LDFLAGS)
+	$(CC) $(CFLAGS) $(OBJSPATH)/cgivars.o $(OBJSPATH)/ptzRightCtrl.o -o $(OBJSPATH)/ptzRightCtrl.cgi $(LDFLAGS)
+	
+clean: 
+	rm -f $(OBJSPATH)/*.o $(OBJSPATH)/*.a $(OBJSPATH)/*.cgi
+	rm -f *~
+	rmdir $(OBJSPATH)

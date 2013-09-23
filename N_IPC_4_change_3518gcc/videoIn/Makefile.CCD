@@ -1,0 +1,49 @@
+# Makefile for DVS901H
+# Copyright(C) 2005-2010 TaiTech Inc.
+
+# Cross Compile Tools
+CC 			:=  arm-hisiv100nptl-linux-gcc
+AR			:= arm-hisiv100nptl-linux-ar
+
+# MPP
+MPP_VERSION				:= V1.1.2.3
+
+MPP_INSTALL_PATH			:= /usr/local/hi3511/Hi3511_VSSDK_
+
+# Macro Of Platform
+CFLAGS		:= -DHI3511
+
+# Macro Of Functions
+CFLAGS		+= -DCCD
+
+
+# Macro Of Header
+CFLAGS		+= -I $(MPP_INSTALL_PATH)$(MPP_VERSION)/pub/include
+CFLAGS		+= -I $(MPP_INSTALL_PATH)$(MPP_VERSION)/mpp/include
+CFLAGS		+= -I $(MPP_INSTALL_PATH)$(MPP_VERSION)/mpp/include/mkp
+
+# Macro Of Library
+LDFLAGS	:=
+
+# Object path configure
+OBJSPATH 	:= ./debug_HI3511
+OBJS 		:= $(wildcard $(OBJSPATH)/*.o)
+
+# Specific Rules
+.PHONY: all
+
+all:
+	$(if $(shell find $(OBJSPATH)), $(shell cd ./), $(shell mkdir $(OBJSPATH)))
+	
+	$(CC) -c vinHI3511.c -o $(OBJSPATH)/vinHI3511.o $(CFLAGS)
+	$(CC) -c videoIn.c -o $(OBJSPATH)/videoIn.o $(CFLAGS)
+	
+	$(AR) -rcs $(OBJSPATH)/libvideoIn.a $(OBJS) $(LDFLAGS)
+	
+	cp $(OBJSPATH)/*.a ../libs_HI3511/
+
+clean: 
+	rm -f $(OBJSPATH)/*.o $(OBJSPATH)/*.a $(OBJSPATH)/*.out
+	rm -f *~
+	rmdir $(OBJSPATH)
+

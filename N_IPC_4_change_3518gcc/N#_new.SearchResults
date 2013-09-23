@@ -1,0 +1,51 @@
+---- HI_MPI_VENC_GetStream Matches (23 in 5 files) ----
+Core:			s32Ret = HI_MPI_VENC_GetStream(SnapChn, &stStream, HI_TRUE);
+Core:				printf("HI_MPI_VENC_GetStream:0x%x\n",s32Ret);
+Core:			//s32Ret = HI_MPI_VENC_GetStream(VeChn, &stStream, HI_TRUE);
+Core:			s32Ret = HI_MPI_VENC_GetStream(VeChn, &stStream, HI_IO_BLOCK);
+Core:				printf("HI_MPI_VENC_GetStream:0x%x\n",s32Ret);
+Core:			printf("HI_MPI_VENC_GetStream = %d!!!\n", sizeof(stStream));
+Core:			//s32Ret = HI_MPI_VENC_GetStream(VeChn, &stStream, HI_TRUE);
+Core:			s32Ret = HI_MPI_VENC_GetStream(VeChn, &stStream, HI_IO_BLOCK);
+Core:				printf("HI_MPI_VENC_GetStream:0x%x\n",s32Ret);
+Core:			printf("HI_MPI_VENC_GetStream = %d!!!\n", sizeof(stStream));
+Mpi_venc.h (include):HI_S32 HI_MPI_VENC_GetStream(VENC_CHN VeChn, VENC_STREAM_S *pstStream, HI_BOOL bBlockFlag);
+Mpi_venc.h (mpp\include):HI_S32 HI_MPI_VENC_GetStream(VENC_CHN VeChn, VENC_STREAM_S *pstStream, HI_BOOL bBlockFlag);
+Sample_comm_venc.c (mpp\sample\common):            s32Ret = HI_MPI_VENC_GetStream(VencChn, &stStream, HI_TRUE);
+Sample_comm_venc.c (mpp\sample\common):                SAMPLE_PRT("HI_MPI_VENC_GetStream failed with %#x!\n", s32Ret);
+Sample_comm_venc.c (mpp\sample\common):                SAMPLE_PRT("HI_MPI_VENC_GetStream failed with %#x!\n", s32Ret);
+Sample_comm_venc.c (mpp\sample\common):                    s32Ret = HI_MPI_VENC_GetStream(i, &stStream, HI_TRUE);
+Sample_comm_venc.c (mpp\sample\common):                        SAMPLE_PRT("HI_MPI_VENC_GetStream failed with %#x!\n", \
+vencHi3511.c (videoenc):			s32Ret = HI_MPI_VENC_GetStream(SnapChn, &stStream, HI_TRUE);
+vencHi3511.c (videoenc):				printf("HI_MPI_VENC_GetStream:0x%x\n",s32Ret);
+vencHi3511.c (videoenc):			//s32Ret = HI_MPI_VENC_GetStream(VeChn, &stStream, HI_TRUE);
+vencHi3511.c (videoenc):			s32Ret = HI_MPI_VENC_GetStream(VeChn, &stStream, HI_IO_BLOCK);
+vencHi3511.c (videoenc):				printf("HI_MPI_VENC_GetStream:0x%x\n",s32Ret);
+vencHi3511.c (videoenc):		//	printf("HI_MPI_VENC_GetStream = %d!!!\n", sizeof(stStream));
+---- HI_MPI_VENC_GetStream Search Errors Encountered (2) ----
+The following 2 files could not be processed:
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\N#_new.IAB : File could not be opened.
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\N#_new.IMB : File could not be opened.
+---- Jerry.Zhuang Search Errors Encountered (21) ----
+The following 21 files could not be processed:
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\mpp\sample\hifb\res\0.bmp : File could not be opened.
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\mpp\sample\hifb\res\1.bmp : File could not be opened.
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\mpp\sample\tde\res\apple.bmp : File could not be opened.
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\mpp\sample\tde\res\applets.bmp : File could not be opened.
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\mpp\sample\tde\res\background.bmp : File could not be opened.
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\mpp\sample\tde\res\calendar.bmp : File could not be opened.
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\mpp\sample\hifb\res\cursor.bmp : File could not be opened.
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\mpp\sample\tde\res\foot.bmp : File could not be opened.
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\mpp\sample\tde\res\gimp.bmp : File could not be opened.
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\mpp\sample\tde\res\gmush.bmp : File could not be opened.
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\mpp\sample\tde\res\gsame.bmp : File could not be opened.
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\mpp\sample\tde\res\keys.bmp : File could not be opened.
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\mpp\sample\region\mm.bmp : File could not be opened.
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\N#_new.IAB : File could not be opened.
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\N#_new.IAD : File could not be opened.
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\N#_new.IMB : File could not be opened.
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\N#_new.IMD : File could not be opened.
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\N#_new.PFI : File could not be opened.
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\N#_new.PO : File could not be opened.
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\N#_new.PR : File could not be opened.
+E:\source\zhongqiu\N_IPC_4_change_3518gcc\N#_new.PS : File could not be opened.
