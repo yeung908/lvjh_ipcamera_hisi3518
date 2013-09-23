@@ -1,0 +1,13 @@
+---- sub Matches (12 in 6 files) ----
+MediaSession.cpp (livemedia):// potentially multiple (audio and/or video) sub-sessions
+MediaSession.cpp (livemedia):    // We have a "m=" line, representing a new sub-session:
+MediaSession.hh (livemedia\include):// potentially multiple (audio and/or video) sub-sessions
+RTPInterface.cpp (livemedia):// sub-channels that are reading from this socket.
+ServerMediaSession.cpp (livemedia):// potentially multiple (audio and/or video) sub-sessions
+ServerMediaSession.hh (livemedia\include):// potentially multiple (audio and/or video) sub-sessions
+testOnDemandRTSPServer.cpp (testprogs):  	sprintf(sudStreamName, "%s%s%s%s%s", "0/",  user_info_param.Admin.strName, ":",user_info_param.Admin.strPsw, "/sub.sdp");
+testOnDemandRTSPServer.cpp (testprogs)://    char const* streamName = "0/admin:admin/sub.sdp";
+testOnDemandRTSPServer.cpp (testprogs):  	sprintf(sudStreamName, "%s%s%s%s%s", "0/",  user_info_param.Admin.strName, ":",user_info_param.Admin.strPsw, "/sub");
+testOnDemandRTSPServer.cpp (testprogs)://    char const* streamName = "0/admin:admin/sub.sdp";
+testOnDemandRTSPServer.cpp (testprogs)://    char const* streamName = "0/admin:admin/sub.sdp";
+testOnDemandRTSPServer.cpp (testprogs):    char const* streamName = "1/888888:888888/sub.sdp";
