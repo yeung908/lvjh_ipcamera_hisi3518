@@ -1,0 +1,1 @@
+cmd_/opt/yiview/work/Hi3518C_V100R001C01SPC040/01.software/board/Hi3518_SDK_V1.0.4.0/mpp/extdrv/gpio-i2c/gpioi2c.o := arm-hisiv100nptl-linux-ld -EL    -r -o /opt/yiview/work/Hi3518C_V100R001C01SPC040/01.software/board/Hi3518_SDK_V1.0.4.0/mpp/extdrv/gpio-i2c/gpioi2c.o /opt/yiview/work/Hi3518C_V100R001C01SPC040/01.software/board/Hi3518_SDK_V1.0.4.0/mpp/extdrv/gpio-i2c/gpio_i2c.o 

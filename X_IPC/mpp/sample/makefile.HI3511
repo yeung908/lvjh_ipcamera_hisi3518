@@ -1,0 +1,36 @@
+AR			:= arm-hisiv100nptl-linux-ar
+LDFLAGS		:=	
+OBJSPATH 	:= ./common
+OBJS 		:= $(wildcard $(OBJSPATH)/*.o)
+
+all:
+	@cd hifb;   make
+	@cd vio;    make
+	@cd venc;   make
+	@cd region; make
+	@cd vda;    make
+	@cd audio;  make
+	@cd tde;    make
+	$(AR) -rcs $(OBJSPATH)/libcommon.a $(OBJS) $(LDFLAGS)
+	@cp $(OBJSPATH)/*.a ../../libs_HI3511/
+	@cp $(OBJSPATH)/*.o ../../debug_HI3511/
+	
+
+clean:
+	@cd hifb;   make clean
+	@cd vio;    make clean
+	@cd venc;   make clean
+	@cd region; make clean
+	@cd vda;    make clean
+	@cd audio;  make clean
+	@cd tde;    make clean
+	@cd common; rm -fr libcommon.a
+
+cleanall:
+	@cd hifb;   make clean;   make cleanstream
+	@cd vio;    make clean;   make cleanstream
+	@cd venc;   make clean;   make cleanstream
+	@cd region; make clean;   make cleanstream
+	@cd vda;    make clean;   make cleanstream
+	@cd audio;  make clean;   make cleanstream
+	@cd tde;    make clean
