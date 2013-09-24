@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope
+ xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope"
+ xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:wsa5="http://www.w3.org/2005/08/addressing"
+ xmlns:xmime="http://tempuri.org/xmime.xsd"
+ xmlns:xop="http://www.w3.org/2004/08/xop/include"
+ xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+ xmlns:tt="http://www.onvif.org/ver10/schema"
+ xmlns:wsbf2="http://docs.oasis-open.org/wsrf/bf-2"
+ xmlns:wstop="http://docs.oasis-open.org/wsn/t-1"
+ xmlns:wsr2="http://docs.oasis-open.org/wsrf/r-2"
+ xmlns:daae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding"
+ xmlns:dare="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding"
+ xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl"
+ xmlns:decpp="http://www.onvif.org/ver10/events/wsdl/CreatePullPointBinding"
+ xmlns:dee="http://www.onvif.org/ver10/events/wsdl/EventBinding"
+ xmlns:denc="http://www.onvif.org/ver10/events/wsdl/NotificationConsumerBinding"
+ xmlns:denf="http://www.onvif.org/ver10/events/wsdl/NotificationProducerBinding"
+ xmlns:depp="http://www.onvif.org/ver10/events/wsdl/PullPointBinding"
+ xmlns:depps="http://www.onvif.org/ver10/events/wsdl/PullPointSubscriptionBinding"
+ xmlns:tev="http://www.onvif.org/ver10/events/wsdl"
+ xmlns:depsm="http://www.onvif.org/ver10/events/wsdl/PausableSubscriptionManagerBinding"
+ xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2"
+ xmlns:desm="http://www.onvif.org/ver10/events/wsdl/SubscriptionManagerBinding"
+ xmlns:dndl="http://www.onvif.org/ver10/network/wsdl/DiscoveryLookupBinding"
+ xmlns:dnrd="http://www.onvif.org/ver10/network/wsdl/RemoteDiscoveryBinding"
+ xmlns:d="http://schemas.xmlsoap.org/ws/2005/04/discovery"
+ xmlns:dn="http://www.onvif.org/ver10/network/wsdl"
+ xmlns:tad="http://www.onvif.org/ver10/analyticsdevice/wsdl"
+ xmlns:tdis="http://www.onvif.org/ver10/display/wsdl"
+ xmlns:tds="http://www.onvif.org/ver10/device/wsdl"
+ xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl"
+ xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl"
+ xmlns:trcv="http://www.onvif.org/ver10/receiver/wsdl"
+ xmlns:trec="http://www.onvif.org/ver10/recording/wsdl"
+ xmlns:trp="http://www.onvif.org/ver10/replay/wsdl"
+ xmlns:trt="http://www.onvif.org/ver10/media/wsdl"
+ xmlns:tse="http://www.onvif.org/ver10/search/wsdl">
+ <SOAP-ENV:Header>
+ </SOAP-ENV:Header>
+ <SOAP-ENV:Body>
+  <tds:GetCapabilitiesResponse>
+   <tds:Capabilities>
+    <tds:Analytics>
+     <tds:XAddr></tds:XAddr>
+     <tds:RuleSupport>false</tds:RuleSupport>
+     <tds:AnalyticsModuleSupport>false</tds:AnalyticsModuleSupport>
+     <!-- extensibility element(s) -->
+
+     <!-- extensibility element(s) -->
+
+    </tds:Analytics>
+    <tds:Device>
+     <tds:XAddr></tds:XAddr>
+     <tds:Network>
+      <tds:IPFilter>false</tds:IPFilter>
+      <tds:ZeroConfiguration>false</tds:ZeroConfiguration>
+      <tds:IPVersion6>false</tds:IPVersion6>
+      <tds:DynDNS>false</tds:DynDNS>
+      <tds:Extension>
+       <!-- extensibility element(s) -->
+
+       <!-- extensibility element(s) -->
+
+       <tds:Dot11Configuration>false</tds:Dot11Configuration>
+       <tds:Extension>
+        <!-- extensibility element(s) -->
+
+        <!-- extensibility element(s) -->
+
+       </tds:Extension>
+      </tds:Extension>
+     </tds:Network>
+     <tds:System>
+      <tds:DiscoveryResolve>false</tds:DiscoveryResolve>
+      <tds:DiscoveryBye>false</tds:DiscoveryBye>
+      <tds:RemoteDiscovery>false</tds:RemoteDiscovery>
+      <tds:SystemBackup>false</tds:SystemBackup>
+      <tds:SystemLogging>false</tds:SystemLogging>
+      <tds:FirmwareUpgrade>false</tds:FirmwareUpgrade>
+      <tds:SupportedVersions>
+       <tds:Major>0</tds:Major>
+       <tds:Minor>0</tds:Minor>
+      </tds:SupportedVersions>
+      <tds:SupportedVersions>
+       <tds:Major>0</tds:Major>
+       <tds:Minor>0</tds:Minor>
+      </tds:SupportedVersions>
+      <tds:Extension>
+       <!-- extensibility element(s) -->
+
+       <!-- extensibility element(s) -->
+
+       <tds:HttpFirmwareUpgrade>false</tds:HttpFirmwareUpgrade>
+       <tds:HttpSystemBackup>false</tds:HttpSystemBackup>
+       <tds:HttpSystemLogging>false</tds:HttpSystemLogging>
+       <tds:HttpSupportInformation>false</tds:HttpSupportInformation>
+       <tds:Extension>
+        <!-- extensibility element(s) -->
+
+        <!-- extensibility element(s) -->
+
+       </tds:Extension>
+      </tds:Extension>
+     </tds:System>
+     <tds:IO>
+      <tds:InputConnectors>0</tds:InputConnectors>
+      <tds:RelayOutputs>0</tds:RelayOutputs>
+      <tds:Extension>
+       <!-- extensibility element(s) -->
+
+       <!-- extensibility element(s) -->
+
+       <tds:Auxiliary>false</tds:Auxiliary>
+       <tds:AuxiliaryCommands></tds:AuxiliaryCommands>
+       <tds:AuxiliaryCommands></tds:AuxiliaryCommands>
+       <tds:Extension>
+        <!-- extensibility element(s) -->
+
+        <!-- extensibility element(s) -->
+
+       </tds:Extension>
+      </tds:Extension>
+     </tds:IO>
+     <tds:Security>
+      <tds:TLS1.1>false</tds:TLS1.1>
+      <tds:TLS1.2>false</tds:TLS1.2>
+      <tds:OnboardKeyGeneration>false</tds:OnboardKeyGeneration>
+      <tds:AccessPolicyConfig>false</tds:AccessPolicyConfig>
+      <tds:X.509Token>false</tds:X.509Token>
+      <tds:SAMLToken>false</tds:SAMLToken>
+      <tds:KerberosToken>false</tds:KerberosToken>
+      <tds:RELToken>false</tds:RELToken>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+      <tds:Extension>
+       <tds:TLS1.0>false</tds:TLS1.0>
+       <tds:Extension>
+        <tds:Dot1X>false</tds:Dot1X>
+        <tds:SupportedEAPMethod>0</tds:SupportedEAPMethod>
+        <tds:SupportedEAPMethod>0</tds:SupportedEAPMethod>
+        <tds:RemoteUserHandling>false</tds:RemoteUserHandling>
+        <!-- extensibility element(s) -->
+
+        <!-- extensibility element(s) -->
+
+       </tds:Extension>
+      </tds:Extension>
+     </tds:Security>
+     <tds:Extension>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </tds:Extension>
+    </tds:Device>
+    <tds:Events>
+     <tds:XAddr></tds:XAddr>
+     <tds:WSSubscriptionPolicySupport>false</tds:WSSubscriptionPolicySupport>
+     <tds:WSPullPointSupport>false</tds:WSPullPointSupport>
+     <tds:WSPausableSubscriptionManagerInterfaceSupport>false</tds:WSPausableSubscriptionManagerInterfaceSupport>
+     <!-- extensibility element(s) -->
+
+     <!-- extensibility element(s) -->
+
+    </tds:Events>
+    <tds:Imaging>
+     <tds:XAddr></tds:XAddr>
+    </tds:Imaging>
+    <tds:Media>
+     <tds:XAddr></tds:XAddr>
+     <tds:StreamingCapabilities>
+      <tds:RTPMulticast>false</tds:RTPMulticast>
+      <tds:RTP_TCP>false</tds:RTP_TCP>
+      <tds:RTP_RTSP_TCP>false</tds:RTP_RTSP_TCP>
+      <tds:Extension>
+       <!-- extensibility element(s) -->
+
+       <!-- extensibility element(s) -->
+
+      </tds:Extension>
+     </tds:StreamingCapabilities>
+     <!-- extensibility element(s) -->
+
+     <!-- extensibility element(s) -->
+
+     <tds:Extension>
+      <tds:ProfileCapabilities>
+       <tds:MaximumNumberOfProfiles>0</tds:MaximumNumberOfProfiles>
+       <!-- extensibility element(s) -->
+
+       <!-- extensibility element(s) -->
+
+      </tds:ProfileCapabilities>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </tds:Extension>
+    </tds:Media>
+    <tds:PTZ>
+     <tds:XAddr></tds:XAddr>
+     <!-- extensibility element(s) -->
+
+     <!-- extensibility element(s) -->
+
+    </tds:PTZ>
+    <tds:Extension>
+     <!-- extensibility element(s) -->
+
+     <!-- extensibility element(s) -->
+
+     <tds:DeviceIO>
+      <tds:XAddr></tds:XAddr>
+      <tds:VideoSources>0</tds:VideoSources>
+      <tds:VideoOutputs>0</tds:VideoOutputs>
+      <tds:AudioSources>0</tds:AudioSources>
+      <tds:AudioOutputs>0</tds:AudioOutputs>
+      <tds:RelayOutputs>0</tds:RelayOutputs>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </tds:DeviceIO>
+     <tds:Display>
+      <tds:XAddr></tds:XAddr>
+      <tds:FixedLayout>false</tds:FixedLayout>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </tds:Display>
+     <tds:Recording>
+      <tds:XAddr></tds:XAddr>
+      <tds:ReceiverSource>false</tds:ReceiverSource>
+      <tds:MediaProfileSource>false</tds:MediaProfileSource>
+      <tds:DynamicRecordings>false</tds:DynamicRecordings>
+      <tds:DynamicTracks>false</tds:DynamicTracks>
+      <tds:MaxStringLength>0</tds:MaxStringLength>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </tds:Recording>
+     <tds:Search>
+      <tds:XAddr></tds:XAddr>
+      <tds:MetadataSearch>false</tds:MetadataSearch>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </tds:Search>
+     <tds:Replay>
+      <tds:XAddr></tds:XAddr>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </tds:Replay>
+     <tds:Receiver>
+      <tds:XAddr></tds:XAddr>
+      <tds:RTP_Multicast>false</tds:RTP_Multicast>
+      <tds:RTP_TCP>false</tds:RTP_TCP>
+      <tds:RTP_RTSP_TCP>false</tds:RTP_RTSP_TCP>
+      <tds:SupportedReceivers>0</tds:SupportedReceivers>
+      <tds:MaximumRTSPURILength>0</tds:MaximumRTSPURILength>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </tds:Receiver>
+     <tds:AnalyticsDevice>
+      <tds:XAddr></tds:XAddr>
+      <tds:RuleSupport>false</tds:RuleSupport>
+      <tds:Extension>
+       <!-- extensibility element(s) -->
+
+       <!-- extensibility element(s) -->
+
+      </tds:Extension>
+     </tds:AnalyticsDevice>
+     <tds:Extensions>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </tds:Extensions>
+    </tds:Extension>
+   </tds:Capabilities>
+  </tds:GetCapabilitiesResponse>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

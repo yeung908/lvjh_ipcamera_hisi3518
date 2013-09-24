@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope
+ xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope"
+ xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:wsa5="http://www.w3.org/2005/08/addressing"
+ xmlns:xmime="http://tempuri.org/xmime.xsd"
+ xmlns:xop="http://www.w3.org/2004/08/xop/include"
+ xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+ xmlns:tt="http://www.onvif.org/ver10/schema"
+ xmlns:wsbf2="http://docs.oasis-open.org/wsrf/bf-2"
+ xmlns:wstop="http://docs.oasis-open.org/wsn/t-1"
+ xmlns:wsr2="http://docs.oasis-open.org/wsrf/r-2"
+ xmlns:daae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding"
+ xmlns:dare="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding"
+ xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl"
+ xmlns:decpp="http://www.onvif.org/ver10/events/wsdl/CreatePullPointBinding"
+ xmlns:dee="http://www.onvif.org/ver10/events/wsdl/EventBinding"
+ xmlns:denc="http://www.onvif.org/ver10/events/wsdl/NotificationConsumerBinding"
+ xmlns:denf="http://www.onvif.org/ver10/events/wsdl/NotificationProducerBinding"
+ xmlns:depp="http://www.onvif.org/ver10/events/wsdl/PullPointBinding"
+ xmlns:depps="http://www.onvif.org/ver10/events/wsdl/PullPointSubscriptionBinding"
+ xmlns:tev="http://www.onvif.org/ver10/events/wsdl"
+ xmlns:depsm="http://www.onvif.org/ver10/events/wsdl/PausableSubscriptionManagerBinding"
+ xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2"
+ xmlns:desm="http://www.onvif.org/ver10/events/wsdl/SubscriptionManagerBinding"
+ xmlns:dndl="http://www.onvif.org/ver10/network/wsdl/DiscoveryLookupBinding"
+ xmlns:dnrd="http://www.onvif.org/ver10/network/wsdl/RemoteDiscoveryBinding"
+ xmlns:d="http://schemas.xmlsoap.org/ws/2005/04/discovery"
+ xmlns:dn="http://www.onvif.org/ver10/network/wsdl"
+ xmlns:tad="http://www.onvif.org/ver10/analyticsdevice/wsdl"
+ xmlns:tdis="http://www.onvif.org/ver10/display/wsdl"
+ xmlns:tds="http://www.onvif.org/ver10/device/wsdl"
+ xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl"
+ xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl"
+ xmlns:trcv="http://www.onvif.org/ver10/receiver/wsdl"
+ xmlns:trec="http://www.onvif.org/ver10/recording/wsdl"
+ xmlns:trp="http://www.onvif.org/ver10/replay/wsdl"
+ xmlns:trt="http://www.onvif.org/ver10/media/wsdl"
+ xmlns:tse="http://www.onvif.org/ver10/search/wsdl">
+ <SOAP-ENV:Header>
+ </SOAP-ENV:Header>
+ <SOAP-ENV:Body>
+  <trt:GetVideoSourcesResponse>
+   <trt:VideoSources token="">
+    <trt:Framerate>0.0</trt:Framerate>
+    <trt:Resolution>
+     <trt:Width>0</trt:Width>
+     <trt:Height>0</trt:Height>
+    </trt:Resolution>
+    <trt:Imaging>
+     <trt:BacklightCompensation>
+      <trt:Mode>OFF</trt:Mode>
+      <trt:Level>0.0</trt:Level>
+     </trt:BacklightCompensation>
+     <trt:Brightness>0.0</trt:Brightness>
+     <trt:ColorSaturation>0.0</trt:ColorSaturation>
+     <trt:Contrast>0.0</trt:Contrast>
+     <trt:Exposure>
+      <trt:Mode>AUTO</trt:Mode>
+      <trt:Priority>LowNoise</trt:Priority>
+      <trt:Window bottom="0.0" top="0.0" right="0.0" left="0.0">
+      </trt:Window>
+      <trt:MinExposureTime>0.0</trt:MinExposureTime>
+      <trt:MaxExposureTime>0.0</trt:MaxExposureTime>
+      <trt:MinGain>0.0</trt:MinGain>
+      <trt:MaxGain>0.0</trt:MaxGain>
+      <trt:MinIris>0.0</trt:MinIris>
+      <trt:MaxIris>0.0</trt:MaxIris>
+      <trt:ExposureTime>0.0</trt:ExposureTime>
+      <trt:Gain>0.0</trt:Gain>
+      <trt:Iris>0.0</trt:Iris>
+     </trt:Exposure>
+     <trt:Focus>
+      <trt:AutoFocusMode>AUTO</trt:AutoFocusMode>
+      <trt:DefaultSpeed>0.0</trt:DefaultSpeed>
+      <trt:NearLimit>0.0</trt:NearLimit>
+      <trt:FarLimit>0.0</trt:FarLimit>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </trt:Focus>
+     <trt:IrCutFilter>ON</trt:IrCutFilter>
+     <trt:Sharpness>0.0</trt:Sharpness>
+     <trt:WideDynamicRange>
+      <trt:Mode>OFF</trt:Mode>
+      <trt:Level>0.0</trt:Level>
+     </trt:WideDynamicRange>
+     <trt:WhiteBalance>
+      <trt:Mode>AUTO</trt:Mode>
+      <trt:CrGain>0.0</trt:CrGain>
+      <trt:CbGain>0.0</trt:CbGain>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </trt:WhiteBalance>
+     <trt:Extension>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </trt:Extension>
+    </trt:Imaging>
+    <trt:Extension>
+     <!-- extensibility element(s) -->
+
+     <!-- extensibility element(s) -->
+
+     <trt:Imaging>
+      <trt:BacklightCompensation>
+       <trt:Mode>OFF</trt:Mode>
+       <trt:Level>0.0</trt:Level>
+      </trt:BacklightCompensation>
+      <trt:Brightness>0.0</trt:Brightness>
+      <trt:ColorSaturation>0.0</trt:ColorSaturation>
+      <trt:Contrast>0.0</trt:Contrast>
+      <trt:Exposure>
+       <trt:Mode>AUTO</trt:Mode>
+       <trt:Priority>LowNoise</trt:Priority>
+       <trt:Window bottom="0.0" top="0.0" right="0.0" left="0.0">
+       </trt:Window>
+       <trt:MinExposureTime>0.0</trt:MinExposureTime>
+       <trt:MaxExposureTime>0.0</trt:MaxExposureTime>
+       <trt:MinGain>0.0</trt:MinGain>
+       <trt:MaxGain>0.0</trt:MaxGain>
+       <trt:MinIris>0.0</trt:MinIris>
+       <trt:MaxIris>0.0</trt:MaxIris>
+       <trt:ExposureTime>0.0</trt:ExposureTime>
+       <trt:Gain>0.0</trt:Gain>
+       <trt:Iris>0.0</trt:Iris>
+      </trt:Exposure>
+      <trt:Focus>
+       <trt:AutoFocusMode>AUTO</trt:AutoFocusMode>
+       <trt:DefaultSpeed>0.0</trt:DefaultSpeed>
+       <trt:NearLimit>0.0</trt:NearLimit>
+       <trt:FarLimit>0.0</trt:FarLimit>
+       <trt:Extension>
+        <!-- extensibility element(s) -->
+
+        <!-- extensibility element(s) -->
+
+       </trt:Extension>
+      </trt:Focus>
+      <trt:IrCutFilter>ON</trt:IrCutFilter>
+      <trt:Sharpness>0.0</trt:Sharpness>
+      <trt:WideDynamicRange>
+       <trt:Mode>OFF</trt:Mode>
+       <trt:Level>0.0</trt:Level>
+      </trt:WideDynamicRange>
+      <trt:WhiteBalance>
+       <trt:Mode>AUTO</trt:Mode>
+       <trt:CrGain>0.0</trt:CrGain>
+       <trt:CbGain>0.0</trt:CbGain>
+       <trt:Extension>
+        <!-- extensibility element(s) -->
+
+        <!-- extensibility element(s) -->
+
+       </trt:Extension>
+      </trt:WhiteBalance>
+      <trt:Extension>
+       <!-- extensibility element(s) -->
+
+       <!-- extensibility element(s) -->
+
+      </trt:Extension>
+     </trt:Imaging>
+     <trt:Extension>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </trt:Extension>
+    </trt:Extension>
+   </trt:VideoSources>
+  </trt:GetVideoSourcesResponse>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

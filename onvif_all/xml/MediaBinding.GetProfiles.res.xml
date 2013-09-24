@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope
+ xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope"
+ xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:wsa5="http://www.w3.org/2005/08/addressing"
+ xmlns:xmime="http://tempuri.org/xmime.xsd"
+ xmlns:xop="http://www.w3.org/2004/08/xop/include"
+ xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+ xmlns:tt="http://www.onvif.org/ver10/schema"
+ xmlns:wsbf2="http://docs.oasis-open.org/wsrf/bf-2"
+ xmlns:wstop="http://docs.oasis-open.org/wsn/t-1"
+ xmlns:wsr2="http://docs.oasis-open.org/wsrf/r-2"
+ xmlns:daae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding"
+ xmlns:dare="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding"
+ xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl"
+ xmlns:decpp="http://www.onvif.org/ver10/events/wsdl/CreatePullPointBinding"
+ xmlns:dee="http://www.onvif.org/ver10/events/wsdl/EventBinding"
+ xmlns:denc="http://www.onvif.org/ver10/events/wsdl/NotificationConsumerBinding"
+ xmlns:denf="http://www.onvif.org/ver10/events/wsdl/NotificationProducerBinding"
+ xmlns:depp="http://www.onvif.org/ver10/events/wsdl/PullPointBinding"
+ xmlns:depps="http://www.onvif.org/ver10/events/wsdl/PullPointSubscriptionBinding"
+ xmlns:tev="http://www.onvif.org/ver10/events/wsdl"
+ xmlns:depsm="http://www.onvif.org/ver10/events/wsdl/PausableSubscriptionManagerBinding"
+ xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2"
+ xmlns:desm="http://www.onvif.org/ver10/events/wsdl/SubscriptionManagerBinding"
+ xmlns:dndl="http://www.onvif.org/ver10/network/wsdl/DiscoveryLookupBinding"
+ xmlns:dnrd="http://www.onvif.org/ver10/network/wsdl/RemoteDiscoveryBinding"
+ xmlns:d="http://schemas.xmlsoap.org/ws/2005/04/discovery"
+ xmlns:dn="http://www.onvif.org/ver10/network/wsdl"
+ xmlns:tad="http://www.onvif.org/ver10/analyticsdevice/wsdl"
+ xmlns:tdis="http://www.onvif.org/ver10/display/wsdl"
+ xmlns:tds="http://www.onvif.org/ver10/device/wsdl"
+ xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl"
+ xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl"
+ xmlns:trcv="http://www.onvif.org/ver10/receiver/wsdl"
+ xmlns:trec="http://www.onvif.org/ver10/recording/wsdl"
+ xmlns:trp="http://www.onvif.org/ver10/replay/wsdl"
+ xmlns:trt="http://www.onvif.org/ver10/media/wsdl"
+ xmlns:tse="http://www.onvif.org/ver10/search/wsdl">
+ <SOAP-ENV:Header>
+ </SOAP-ENV:Header>
+ <SOAP-ENV:Body>
+  <trt:GetProfilesResponse>
+   <trt:Profiles token="" fixed="false">
+    <trt:Name></trt:Name>
+    <trt:VideoSourceConfiguration token="">
+     <trt:Name></trt:Name>
+     <trt:UseCount>0</trt:UseCount>
+     <trt:SourceToken></trt:SourceToken>
+     <trt:Bounds x="0" y="0" width="0" height="0">
+     </trt:Bounds>
+     <!-- extensibility element(s) -->
+
+     <!-- extensibility element(s) -->
+
+    </trt:VideoSourceConfiguration>
+    <trt:AudioSourceConfiguration token="">
+     <trt:Name></trt:Name>
+     <trt:UseCount>0</trt:UseCount>
+     <trt:SourceToken></trt:SourceToken>
+     <!-- extensibility element(s) -->
+
+     <!-- extensibility element(s) -->
+
+    </trt:AudioSourceConfiguration>
+    <trt:VideoEncoderConfiguration token="">
+     <trt:Name></trt:Name>
+     <trt:UseCount>0</trt:UseCount>
+     <trt:Encoding>JPEG</trt:Encoding>
+     <trt:Resolution>
+      <trt:Width>0</trt:Width>
+      <trt:Height>0</trt:Height>
+     </trt:Resolution>
+     <trt:Quality>0.0</trt:Quality>
+     <trt:RateControl>
+      <trt:FrameRateLimit>0</trt:FrameRateLimit>
+      <trt:EncodingInterval>0</trt:EncodingInterval>
+      <trt:BitrateLimit>0</trt:BitrateLimit>
+     </trt:RateControl>
+     <trt:MPEG4>
+      <trt:GovLength>0</trt:GovLength>
+      <trt:Mpeg4Profile>SP</trt:Mpeg4Profile>
+     </trt:MPEG4>
+     <trt:H264>
+      <trt:GovLength>0</trt:GovLength>
+      <trt:H264Profile>Baseline</trt:H264Profile>
+     </trt:H264>
+     <trt:Multicast>
+      <trt:Address>
+       <trt:Type>IPv4</trt:Type>
+       <trt:IPv4Address></trt:IPv4Address>
+       <trt:IPv6Address></trt:IPv6Address>
+      </trt:Address>
+      <trt:Port>0</trt:Port>
+      <trt:TTL>0</trt:TTL>
+      <trt:AutoStart>false</trt:AutoStart>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </trt:Multicast>
+     <trt:SessionTimeout></trt:SessionTimeout>
+     <!-- extensibility element(s) -->
+
+     <!-- extensibility element(s) -->
+
+    </trt:VideoEncoderConfiguration>
+    <trt:AudioEncoderConfiguration token="">
+     <trt:Name></trt:Name>
+     <trt:UseCount>0</trt:UseCount>
+     <trt:Encoding>G711</trt:Encoding>
+     <trt:Bitrate>0</trt:Bitrate>
+     <trt:SampleRate>0</trt:SampleRate>
+     <trt:Multicast>
+      <trt:Address>
+       <trt:Type>IPv4</trt:Type>
+       <trt:IPv4Address></trt:IPv4Address>
+       <trt:IPv6Address></trt:IPv6Address>
+      </trt:Address>
+      <trt:Port>0</trt:Port>
+      <trt:TTL>0</trt:TTL>
+      <trt:AutoStart>false</trt:AutoStart>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </trt:Multicast>
+     <trt:SessionTimeout></trt:SessionTimeout>
+     <!-- extensibility element(s) -->
+
+     <!-- extensibility element(s) -->
+
+    </trt:AudioEncoderConfiguration>
+    <trt:VideoAnalyticsConfiguration token="">
+     <trt:Name></trt:Name>
+     <trt:UseCount>0</trt:UseCount>
+     <trt:AnalyticsEngineConfiguration>
+      <trt:AnalyticsModule Name="" Type="">
+       <trt:Parameters>
+        <trt:SimpleItem Name="" Value="">
+        </trt:SimpleItem>
+        <trt:SimpleItem Name="" Value="">
+        </trt:SimpleItem>
+        <trt:ElementItem Name="">
+         <!-- extensibility element(s) -->
+
+        </trt:ElementItem>
+        <trt:ElementItem Name="">
+         <!-- extensibility element(s) -->
+
+        </trt:ElementItem>
+        <trt:Extension>
+         <!-- extensibility element(s) -->
+
+         <!-- extensibility element(s) -->
+
+        </trt:Extension>
+       </trt:Parameters>
+      </trt:AnalyticsModule>
+      <trt:AnalyticsModule Name="" Type="">
+       <trt:Parameters>
+        <trt:SimpleItem Name="" Value="">
+        </trt:SimpleItem>
+        <trt:SimpleItem Name="" Value="">
+        </trt:SimpleItem>
+        <trt:ElementItem Name="">
+         <!-- extensibility element(s) -->
+
+        </trt:ElementItem>
+        <trt:ElementItem Name="">
+         <!-- extensibility element(s) -->
+
+        </trt:ElementItem>
+        <trt:Extension>
+         <!-- extensibility element(s) -->
+
+         <!-- extensibility element(s) -->
+
+        </trt:Extension>
+       </trt:Parameters>
+      </trt:AnalyticsModule>
+      <trt:Extension>
+       <!-- extensibility element(s) -->
+
+       <!-- extensibility element(s) -->
+
+      </trt:Extension>
+     </trt:AnalyticsEngineConfiguration>
+     <trt:RuleEngineConfiguration>
+      <trt:Rule Name="" Type="">
+       <trt:Parameters>
+        <trt:SimpleItem Name="" Value="">
+        </trt:SimpleItem>
+        <trt:SimpleItem Name="" Value="">
+        </trt:SimpleItem>
+        <trt:ElementItem Name="">
+         <!-- extensibility element(s) -->
+
+        </trt:ElementItem>
+        <trt:ElementItem Name="">
+         <!-- extensibility element(s) -->
+
+        </trt:ElementItem>
+        <trt:Extension>
+         <!-- extensibility element(s) -->
+
+         <!-- extensibility element(s) -->
+
+        </trt:Extension>
+       </trt:Parameters>
+      </trt:Rule>
+      <trt:Rule Name="" Type="">
+       <trt:Parameters>
+        <trt:SimpleItem Name="" Value="">
+        </trt:SimpleItem>
+        <trt:SimpleItem Name="" Value="">
+        </trt:SimpleItem>
+        <trt:ElementItem Name="">
+         <!-- extensibility element(s) -->
+
+        </trt:ElementItem>
+        <trt:ElementItem Name="">
+         <!-- extensibility element(s) -->
+
+        </trt:ElementItem>
+        <trt:Extension>
+         <!-- extensibility element(s) -->
+
+         <!-- extensibility element(s) -->
+
+        </trt:Extension>
+       </trt:Parameters>
+      </trt:Rule>
+      <trt:Extension>
+       <!-- extensibility element(s) -->
+
+       <!-- extensibility element(s) -->
+
+      </trt:Extension>
+     </trt:RuleEngineConfiguration>
+     <!-- extensibility element(s) -->
+
+     <!-- extensibility element(s) -->
+
+    </trt:VideoAnalyticsConfiguration>
+    <trt:PTZConfiguration token="">
+     <trt:Name></trt:Name>
+     <trt:UseCount>0</trt:UseCount>
+     <trt:NodeToken></trt:NodeToken>
+     <trt:DefaultAbsolutePantTiltPositionSpace></trt:DefaultAbsolutePantTiltPositionSpace>
+     <trt:DefaultAbsoluteZoomPositionSpace></trt:DefaultAbsoluteZoomPositionSpace>
+     <trt:DefaultRelativePanTiltTranslationSpace></trt:DefaultRelativePanTiltTranslationSpace>
+     <trt:DefaultRelativeZoomTranslationSpace></trt:DefaultRelativeZoomTranslationSpace>
+     <trt:DefaultContinuousPanTiltVelocitySpace></trt:DefaultContinuousPanTiltVelocitySpace>
+     <trt:DefaultContinuousZoomVelocitySpace></trt:DefaultContinuousZoomVelocitySpace>
+     <trt:DefaultPTZSpeed>
+      <trt:PanTilt x="0.0" y="0.0" space="">
+      </trt:PanTilt>
+      <trt:Zoom x="0.0" space="">
+      </trt:Zoom>
+     </trt:DefaultPTZSpeed>
+     <trt:DefaultPTZTimeout></trt:DefaultPTZTimeout>
+     <trt:PanTiltLimits>
+      <trt:Range>
+       <trt:URI></trt:URI>
+       <trt:XRange>
+        <trt:Min>0.0</trt:Min>
+        <trt:Max>0.0</trt:Max>
+       </trt:XRange>
+       <trt:YRange>
+        <trt:Min>0.0</trt:Min>
+        <trt:Max>0.0</trt:Max>
+       </trt:YRange>
+      </trt:Range>
+     </trt:PanTiltLimits>
+     <trt:ZoomLimits>
+      <trt:Range>
+       <trt:URI></trt:URI>
+       <trt:XRange>
+        <trt:Min>0.0</trt:Min>
+        <trt:Max>0.0</trt:Max>
+       </trt:XRange>
+      </trt:Range>
+     </trt:ZoomLimits>
+     <trt:Extension>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </trt:Extension>
+    </trt:PTZConfiguration>
+    <trt:MetadataConfiguration token="">
+     <trt:Name></trt:Name>
+     <trt:UseCount>0</trt:UseCount>
+     <trt:PTZStatus>
+      <trt:Status>false</trt:Status>
+      <trt:Position>false</trt:Position>
+     </trt:PTZStatus>
+     <trt:Events>
+      <trt:Filter>
+       <!-- extensibility element(s) -->
+
+       <!-- extensibility element(s) -->
+
+      </trt:Filter>
+      <trt:SubscriptionPolicy>
+       <!-- extensibility element(s) -->
+
+       <!-- extensibility element(s) -->
+
+      </trt:SubscriptionPolicy>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </trt:Events>
+     <trt:Analytics>false</trt:Analytics>
+     <trt:Multicast>
+      <trt:Address>
+       <trt:Type>IPv4</trt:Type>
+       <trt:IPv4Address></trt:IPv4Address>
+       <trt:IPv6Address></trt:IPv6Address>
+      </trt:Address>
+      <trt:Port>0</trt:Port>
+      <trt:TTL>0</trt:TTL>
+      <trt:AutoStart>false</trt:AutoStart>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </trt:Multicast>
+     <trt:SessionTimeout></trt:SessionTimeout>
+     <!-- extensibility element(s) -->
+
+     <!-- extensibility element(s) -->
+
+    </trt:MetadataConfiguration>
+    <trt:Extension>
+     <!-- extensibility element(s) -->
+
+     <!-- extensibility element(s) -->
+
+     <trt:AudioOutputConfiguration token="">
+      <trt:Name></trt:Name>
+      <trt:UseCount>0</trt:UseCount>
+      <trt:OutputToken></trt:OutputToken>
+      <trt:SendPrimacy></trt:SendPrimacy>
+      <trt:OutputLevel>0</trt:OutputLevel>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </trt:AudioOutputConfiguration>
+     <trt:AudioDecoderConfiguration token="">
+      <trt:Name></trt:Name>
+      <trt:UseCount>0</trt:UseCount>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </trt:AudioDecoderConfiguration>
+     <trt:Extension>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </trt:Extension>
+    </trt:Extension>
+   </trt:Profiles>
+  </trt:GetProfilesResponse>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

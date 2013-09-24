@@ -1,0 +1,5 @@
+
+#编译之前，要拷贝两个文件
+cp ../gsoap-2.8/gsoap/stdsoap2.c ./
+cp ../gsoap-2.8/gsoap/stdsoap2.h ./
+

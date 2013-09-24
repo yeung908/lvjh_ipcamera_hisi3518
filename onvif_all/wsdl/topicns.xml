@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2008-2010 by ONVIF: Open Network Video Interface Forum. All rights reserved.
+
+Recipients of this document may copy, distribute, publish, or display this document so long as this copyright notice, license and disclaimer are retained with all copies of the document. No license is granted to modify this document.
+
+THIS DOCUMENT IS PROVIDED "AS IS," AND THE CORPORATION AND ITS MEMBERS AND THEIR AFFILIATES, MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR TITLE; THAT THE CONTENTS OF THIS DOCUMENT ARE SUITABLE FOR ANY PURPOSE; OR THAT THE IMPLEMENTATION OF SUCH CONTENTS WILL NOT INFRINGE ANY PATENTS, COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS.
+IN NO EVENT WILL THE CORPORATION OR ITS MEMBERS OR THEIR AFFILIATES BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE OR CONSEQUENTIAL DAMAGES, ARISING OUT OF OR RELATING TO ANY USE OR DISTRIBUTION OF THIS DOCUMENT, WHETHER OR NOT (1) THE CORPORATION, MEMBERS OR THEIR AFFILIATES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, OR (2) SUCH DAMAGES WERE REASONABLY FORESEEABLE, AND ARISING OUT OF OR RELATING TO ANY USE OR DISTRIBUTION OF THIS DOCUMENT.  THE FOREGOING DISCLAIMER AND LIMITATION ON LIABILITY DO NOT APPLY TO, INVALIDATE, OR LIMIT REPRESENTATIONS AND WARRANTIES MADE BY THE MEMBERS AND THEIR RESPECTIVE AFFILIATES TO THE CORPORATION AND OTHER MEMBERS IN CERTAIN WRITTEN POLICIES OF THE CORPORATION.
+-->
+<wstop:TopicNamespace name="ONVIF" targetNamespace="http://www.onvif.org/ver10/topics" xsi:schemaLocation="http://www.onvif.org/ver10/schema http://www.onvif.org/onvif/ver10/schema/onvif.xsd" xmlns:tt="http://www.onvif.org/ver10/schema" xmlns:wstop="http://docs.oasis-open.org/wsn/t-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<wstop:Topic name="Device">
+		<wstop:Topic name="Trigger">
+			<wstop:Topic name="Relay" messageTypes="tt:Message"/>
+		</wstop:Topic>
+		<wstop:Topic name="OperationMode">
+			<wstop:Topic name="ShutdownInitiated" messageTypes="tt:Message"/>
+			<wstop:Topic name="UploadInitiated" messageTypes="tt:Message"/>
+		</wstop:Topic>
+		<wstop:Topic name="HardwareFailure">
+			<wstop:Topic name="FanFailure" messageTypes="tt:Message"/>
+			<wstop:Topic name="PowerSupplyFailure" messageTypes="tt:Message"/>
+			<wstop:Topic name="StorageFailure" messageTypes="tt:Message"/>
+			<wstop:Topic name="TemperatureCritical" messageTypes="tt:Message"/>
+		</wstop:Topic>
+	</wstop:Topic>
+	<wstop:Topic name="VideoSource"/>
+	<wstop:Topic name="VideoEncoder"/>
+	<wstop:Topic name="VideoAnalytics"/>
+	<wstop:Topic name="RuleEngine">
+			<wstop:Topic name="FieldDetector">
+				<wstop:Topic name="ObjectsInside" messageTypes="tt:Message"/>
+			</wstop:Topic>
+			<wstop:Topic name="LineDetector">
+				<wstop:Topic name="Crossed" messageTypes="tt:Message"/>
+			</wstop:Topic>	
+	</wstop:Topic>
+	<wstop:Topic name="PTZController">
+		<wstop:Topic name="PTZPresets">
+			<wstop:Topic name="Invoked" messageTypes="tt:Message"/>
+			<wstop:Topic name="Reached" messageTypes="tt:Message"/>
+			<wstop:Topic name="Aborted" messageTypes="tt:Message"/>
+			<wstop:Topic name="Left" messageTypes="tt:Message"/>
+		</wstop:Topic>
+	</wstop:Topic>
+	<wstop:Topic name="AudioSource"/>
+	<wstop:Topic name="AudioEncoder"/>
+	<wstop:Topic name="UserAlarm"/>
+	<wstop:Topic name="MediaControl">
+		<wstop:Topic name="Profile" messageTypes="tt:Message"/>
+		<wstop:Topic name="VideoSourceConfiguration" messageTypes="tt:Message"/>
+		<wstop:Topic name="AudioSourceConfiguration" messageTypes="tt:Message"/>
+		<wstop:Topic name="VideoEncoderConfiguration" messageTypes="tt:Message"/>
+		<wstop:Topic name="AudioEncoderConfiguration" messageTypes="tt:Message"/>
+		<wstop:Topic name="VideoAnalyticsConfiguration" messageTypes="tt:Message"/>
+		<wstop:Topic name="PTZConfiguration" messageTypes="tt:Message"/>
+		<wstop:Topic name="MetaDataConfiguration" messageTypes="tt:Message"/>
+	</wstop:Topic>
+</wstop:TopicNamespace>

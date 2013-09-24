@@ -1,0 +1,250 @@
+#include <pthread.h>
+#include "onvif.nsmap"
+#include "soapH.h"
+#include "soapStub.h"
+#include "stdsoap2.h"
+
+
+void *process_request(void *soap) 
+{ 
+	pthread_detach(pthread_self()); 
+	soap_serve((struct soap*)soap); 
+	soap_destroy((struct soap*)soap); 
+	soap_end((struct soap*)soap); 
+	soap_done((struct soap*)soap); 
+	free(soap); 
+	return NULL; 
+}
+
+SOAP_FMAC5 int SOAP_FMAC6 __dndl__Probe(struct soap *soap, struct d__ProbeType *d__Probe, struct d__ProbeMatchesType *d__ProbeMatches)
+{
+//	static struct d__ProbeMatchType ProbeMatch;
+
+	printf("probe\r\n");
+//	soap_default_d__ProbeMatchType(soap, &ProbeMatch);
+
+//	ProbeMatch.XAddrs = "http://192.168.16.42/onvif/device_service";
+//	d__ProbeMatches->__sizeProbeMatch = 1;
+//	d__ProbeMatches->ProbeMatch = &ProbeMatch;
+
+	static struct d__ProbeMatchType ProbeMatch;
+	static struct d__ScopesType scopes;
+	static char MessageID[100];
+	static char szXAddr[64];
+	static char szEndpointReference[64];
+	static struct wsa__Relationship wsa_RelatesTo;
+	/*add by yyh*/
+	static struct wsa__EndpointReferenceType  wsa_endpointtype;
+//	static struct wsa__AttributedURI        wsa_addressuri;
+	wsa_endpointtype.Address = "urn:uuid:464A4854-4656-5242-4530-000c29ebd542";
+	/*end by yyh*/
+	unsigned char MacAddr[8] ={0};
+	char strlocalIP[32] = {0};
+
+//	getlocaip(strlocalIP);
+	sprintf(szXAddr, "http://%s/onvif/device_service", "192.168.16.42:8999");
+//	getmacaddress((char*)MacAddr);
+//	sprintf(szEndpointReference, "urn:uuid:11223344-5566-7788-99aa-000c29ebd542");
+
+//	wsa_addressuri.__item =   szEndpointReference;
+	soap_default_d__ProbeMatchType(soap, &ProbeMatch);
+	soap_default_d__ScopesType(soap, &scopes);
+
+#if 0
+	if (soap->header)
+	{
+		uuid_t uuid;    
+		uuid_generate(uuid);
+		strcpy(MessageID, "urn:uuid:");
+		uuid_unparse(uuid, MessageID+9);
+	}
+#endif
+
+//	scopes.__item = "onvif://www.onvif.org/type/video_encoder onvif://www.onvif.org/type/audio_encoder onvif://www.onvif.org/hardware/IPC-model onvif://www.onvif.org/name/IPC-model";
+	scopes.__item = "onvif://www.onvif.org/type/Network_Video_Transmitter onvif://www.onvif.org/type/video_encoder onvif://www.onvif.org/type/audio_encoder onvif://www.onvif.org/name/DM365_IPNC onvif://www.onvif.org/location/country/china onvif://www.onvif.org/hardware/00E00ADD0001";
+	ProbeMatch.wsa__EndpointReference = wsa_endpointtype;//"urn:uuid:464A4854-4656-5242-4530-313035394100";
+
+	ProbeMatch.Types = (char**)"dn:NetworkVideoTransmitter";
+	ProbeMatch.Scopes = &scopes;
+	ProbeMatch.XAddrs = szXAddr;//"http://192.168.7.98/onvif/device_service";
+	ProbeMatch.MetadataVersion = 1267264204;
+
+	d__ProbeMatches->__sizeProbeMatch = 1;
+	d__ProbeMatches->ProbeMatch = &ProbeMatch;
+
+	return SOAP_OK;
+}
+
+SOAP_FMAC5 int SOAP_FMAC6 __dnrd__Hello(struct soap *soap, struct d__HelloType *d__Hello, struct d__ResolveType *dn__HelloResponse)
+{
+	printf("hello\r\n");
+	return SOAP_OK;
+}
+
+SOAP_FMAC5 int SOAP_FMAC6 __dnrd__Bye(struct soap *soap, struct d__ByeType *d__Bye, struct d__ResolveType *dn__ByeResponse)
+{
+	printf("bye\r\n");
+	return SOAP_OK;
+}
+
+int main() 
+{ 
+	int m, s; 
+	pthread_t tid; 
+	struct soap soap, *tsoap; 
+	
+	soap_ssl_init(); /* init OpenSSL (just once) */
+
+	/* Note: CRYPTO_thread_setup() must be called in multi-thread environment */
+	if (CRYPTO_thread_setup()) 
+	{ 
+		fprintf(stderr, "Cannot setup thread mutex/n"); 
+		exit(1); 
+	} 
+
+	//soap_init(&soap); 
+	soap_init2(&soap, SOAP_IO_UDP|SOAP_IO_FLUSH, SOAP_IO_UDP|SOAP_IO_FLUSH);
+
+	if (soap_ssl_server_context(&soap, 
+				SOAP_SSL_DEFAULT, 
+				"server.pem", /* keyfile: required when server must authenticate to clients (see SSL docs on how to obtain this file) */ 
+				"password", /* password to read the key file */ 
+				"cacert.pem", /* optional cacert file to store trusted certificates */ 
+				NULL, /* optional capath to directory with trusted certificates */ 
+				"dh512.pem", /* DH file, if NULL use RSA */ 
+				NULL, /* if randfile!=NULL: use a file with random data to seed randomness */ 
+				NULL /* optional server identification to enable SSL session cache (must be a unique name) */    ))
+	{
+		soap_print_fault(&soap, stderr);
+		exit(1);
+	}
+
+	m = soap_bind(&soap, NULL, 3702, 10); // use port 18000
+	if (m < 0)
+	{
+		soap_print_fault(&soap, stderr);
+		exit(1);
+	}
+
+	fprintf(stderr, "Socket connection successful: master socket = %d/n", m);
+
+	for (;;)
+	{
+		s = soap_accept(&soap);
+		fprintf(stderr, "Socket connection successful: slave socket = %d/n", s);
+		if (s < 0)
+		{
+			soap_print_fault(&soap, stderr);
+			break;
+		}
+		tsoap = soap_copy(&soap); /* should call soap_ssl_accept on a copy */
+		if (!tsoap)
+			break;
+		if (soap_ssl_accept(tsoap))
+		{
+			soap_print_fault(tsoap, stderr);
+			soap_free(tsoap);
+			continue; /* when soap_ssl_accept fails, we should just go on */
+		}
+
+		pthread_create(&tid, NULL, &process_request, (void*)tsoap);
+	}
+
+	soap_done(&soap); /* deallocates SSL context */
+	CRYPTO_thread_cleanup();
+
+	return 0;
+}
+
+
+#include "openssl/ssl.h"
+#include "unistd.h" /* defines _POSIX_THREADS if pthreads are available */ 
+#if defined(WIN32) 
+# define MUTEX_TYPE HANDLE 
+# define MUTEX_SETUP(x) (x) = CreateMutex(NULL, FALSE, NULL) 
+# define MUTEX_CLEANUP(x) CloseHandle(x) 
+# define MUTEX_LOCK(x) WaitForSingleObject((x), INFINITE) 
+# define MUTEX_UNLOCK(x) ReleaseMutex(x) 
+# define THREAD_ID GetCurrentThreadID() 
+#elif defined(_POSIX_THREADS) 
+# define MUTEX_TYPE pthread_mutex_t 
+# define MUTEX_SETUP(x) pthread_mutex_init(&(x), NULL) 
+# define MUTEX_CLEANUP(x) pthread_mutex_destroy(&(x)) 
+# define MUTEX_LOCK(x) pthread_mutex_lock(&(x)) 
+# define MUTEX_UNLOCK(x) pthread_mutex_unlock(&(x)) 
+# define THREAD_ID pthread_self() 
+#else 
+# error "You must define mutex operations appropriate for your platform" 
+# error "See OpenSSL /threads/th-lock.c on how to implement mutex on your platform" 
+#endif 
+
+struct CRYPTO_dynlock_value { MUTEX_TYPE mutex; }; 
+static MUTEX_TYPE *mutex_buf; 
+static struct CRYPTO_dynlock_value *dyn_create_function(const char *file, int line) 
+{ 
+	struct CRYPTO_dynlock_value *value; 
+	value = (struct CRYPTO_dynlock_value*)malloc(sizeof(struct CRYPTO_dynlock_value)); 
+	if (value) 
+		MUTEX_SETUP(value->mutex); 
+	return value; 
+}
+ 
+static void dyn_lock_function(int mode, struct CRYPTO_dynlock_value *l, const char *file, int line) 
+{ 
+	if (mode & CRYPTO_LOCK) 
+		MUTEX_LOCK(l->mutex); 
+	else
+		MUTEX_UNLOCK(l->mutex); 
+}
+ 
+static void dyn_destroy_function(struct CRYPTO_dynlock_value *l, const char *file, int line) 
+{ 
+	MUTEX_CLEANUP(l->mutex); 
+	free(l); 
+}
+ 
+void locking_function(int mode, int n, const char *file, int line) 
+{ 
+	if (mode & CRYPTO_LOCK) 
+		MUTEX_LOCK(mutex_buf[n]); 
+	else
+		MUTEX_UNLOCK(mutex_buf[n]); 
+}
+ 
+unsigned long id_function() 
+{ 
+	return (unsigned long)THREAD_ID; 
+}
+ 
+int CRYPTO_thread_setup() 
+{ 
+	int i; 
+	mutex_buf = (MUTEX_TYPE*)malloc(CRYPTO_num_locks() * sizeof(MUTEX_TYPE)); 
+	if (!mutex_buf) 
+		return SOAP_EOM; 
+	for (i = 0; i < CRYPTO_num_locks(); i++) 
+		MUTEX_SETUP(mutex_buf[i]); 
+	CRYPTO_set_id_callback(id_function); 
+	CRYPTO_set_locking_callback(locking_function); 
+	CRYPTO_set_dynlock_create_callback(dyn_create_function); 
+	CRYPTO_set_dynlock_lock_callback(dyn_lock_function); 
+	CRYPTO_set_dynlock_destroy_callback(dyn_destroy_function); 
+	return SOAP_OK; 
+} 
+
+void CRYPTO_thread_cleanup() 
+{ 
+	int i; 
+	if (!mutex_buf) 
+		return; 
+	CRYPTO_set_id_callback(NULL); 
+	CRYPTO_set_locking_callback(NULL); 
+	CRYPTO_set_dynlock_create_callback(NULL); 
+	CRYPTO_set_dynlock_lock_callback(NULL); 
+	CRYPTO_set_dynlock_destroy_callback(NULL); 
+	for (i = 0; i < CRYPTO_num_locks(); i++) 
+		MUTEX_CLEANUP(mutex_buf[i]); 
+	free(mutex_buf); 
+	mutex_buf = NULL; 
+}
+

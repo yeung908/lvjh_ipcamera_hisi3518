@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope
+ xmlns:SOAP-ENV="http://www.w3.org/2003/05/soap-envelope"
+ xmlns:SOAP-ENC="http://www.w3.org/2003/05/soap-encoding"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:wsa5="http://www.w3.org/2005/08/addressing"
+ xmlns:xmime="http://tempuri.org/xmime.xsd"
+ xmlns:xop="http://www.w3.org/2004/08/xop/include"
+ xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+ xmlns:tt="http://www.onvif.org/ver10/schema"
+ xmlns:wsbf2="http://docs.oasis-open.org/wsrf/bf-2"
+ xmlns:wstop="http://docs.oasis-open.org/wsn/t-1"
+ xmlns:wsr2="http://docs.oasis-open.org/wsrf/r-2"
+ xmlns:daae="http://www.onvif.org/ver20/analytics/wsdl/AnalyticsEngineBinding"
+ xmlns:dare="http://www.onvif.org/ver20/analytics/wsdl/RuleEngineBinding"
+ xmlns:tan="http://www.onvif.org/ver20/analytics/wsdl"
+ xmlns:decpp="http://www.onvif.org/ver10/events/wsdl/CreatePullPointBinding"
+ xmlns:dee="http://www.onvif.org/ver10/events/wsdl/EventBinding"
+ xmlns:denc="http://www.onvif.org/ver10/events/wsdl/NotificationConsumerBinding"
+ xmlns:denf="http://www.onvif.org/ver10/events/wsdl/NotificationProducerBinding"
+ xmlns:depp="http://www.onvif.org/ver10/events/wsdl/PullPointBinding"
+ xmlns:depps="http://www.onvif.org/ver10/events/wsdl/PullPointSubscriptionBinding"
+ xmlns:tev="http://www.onvif.org/ver10/events/wsdl"
+ xmlns:depsm="http://www.onvif.org/ver10/events/wsdl/PausableSubscriptionManagerBinding"
+ xmlns:wsnt="http://docs.oasis-open.org/wsn/b-2"
+ xmlns:desm="http://www.onvif.org/ver10/events/wsdl/SubscriptionManagerBinding"
+ xmlns:dndl="http://www.onvif.org/ver10/network/wsdl/DiscoveryLookupBinding"
+ xmlns:dnrd="http://www.onvif.org/ver10/network/wsdl/RemoteDiscoveryBinding"
+ xmlns:d="http://schemas.xmlsoap.org/ws/2005/04/discovery"
+ xmlns:dn="http://www.onvif.org/ver10/network/wsdl"
+ xmlns:tad="http://www.onvif.org/ver10/analyticsdevice/wsdl"
+ xmlns:tdis="http://www.onvif.org/ver10/display/wsdl"
+ xmlns:tds="http://www.onvif.org/ver10/device/wsdl"
+ xmlns:timg="http://www.onvif.org/ver20/imaging/wsdl"
+ xmlns:tptz="http://www.onvif.org/ver20/ptz/wsdl"
+ xmlns:trcv="http://www.onvif.org/ver10/receiver/wsdl"
+ xmlns:trec="http://www.onvif.org/ver10/recording/wsdl"
+ xmlns:trp="http://www.onvif.org/ver10/replay/wsdl"
+ xmlns:trt="http://www.onvif.org/ver10/media/wsdl"
+ xmlns:tse="http://www.onvif.org/ver10/search/wsdl">
+ <SOAP-ENV:Header>
+ </SOAP-ENV:Header>
+ <SOAP-ENV:Body>
+  <tad:CreateAnalyticsEngineInputsResponse>
+   <tad:Configuration token="">
+    <tad:Name></tad:Name>
+    <tad:UseCount>0</tad:UseCount>
+    <tad:SourceIdentification>
+     <tad:Name></tad:Name>
+     <tad:Token></tad:Token>
+     <tad:Token></tad:Token>
+     <tad:Extension>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </tad:Extension>
+    </tad:SourceIdentification>
+    <tad:VideoInput token="">
+     <tad:Name></tad:Name>
+     <tad:UseCount>0</tad:UseCount>
+     <tad:Encoding>JPEG</tad:Encoding>
+     <tad:Resolution>
+      <tad:Width>0</tad:Width>
+      <tad:Height>0</tad:Height>
+     </tad:Resolution>
+     <tad:Quality>0.0</tad:Quality>
+     <tad:RateControl>
+      <tad:FrameRateLimit>0</tad:FrameRateLimit>
+      <tad:EncodingInterval>0</tad:EncodingInterval>
+      <tad:BitrateLimit>0</tad:BitrateLimit>
+     </tad:RateControl>
+     <tad:MPEG4>
+      <tad:GovLength>0</tad:GovLength>
+      <tad:Mpeg4Profile>SP</tad:Mpeg4Profile>
+     </tad:MPEG4>
+     <tad:H264>
+      <tad:GovLength>0</tad:GovLength>
+      <tad:H264Profile>Baseline</tad:H264Profile>
+     </tad:H264>
+     <tad:Multicast>
+      <tad:Address>
+       <tad:Type>IPv4</tad:Type>
+       <tad:IPv4Address></tad:IPv4Address>
+       <tad:IPv6Address></tad:IPv6Address>
+      </tad:Address>
+      <tad:Port>0</tad:Port>
+      <tad:TTL>0</tad:TTL>
+      <tad:AutoStart>false</tad:AutoStart>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </tad:Multicast>
+     <tad:SessionTimeout></tad:SessionTimeout>
+     <!-- extensibility element(s) -->
+
+     <!-- extensibility element(s) -->
+
+    </tad:VideoInput>
+    <tad:MetadataInput>
+     <tad:MetadataConfig Name="" Type="">
+      <tad:Parameters>
+       <tad:SimpleItem Name="" Value="">
+       </tad:SimpleItem>
+       <tad:SimpleItem Name="" Value="">
+       </tad:SimpleItem>
+       <tad:ElementItem Name="">
+        <!-- extensibility element(s) -->
+
+       </tad:ElementItem>
+       <tad:ElementItem Name="">
+        <!-- extensibility element(s) -->
+
+       </tad:ElementItem>
+       <tad:Extension>
+        <!-- extensibility element(s) -->
+
+        <!-- extensibility element(s) -->
+
+       </tad:Extension>
+      </tad:Parameters>
+     </tad:MetadataConfig>
+     <tad:MetadataConfig Name="" Type="">
+      <tad:Parameters>
+       <tad:SimpleItem Name="" Value="">
+       </tad:SimpleItem>
+       <tad:SimpleItem Name="" Value="">
+       </tad:SimpleItem>
+       <tad:ElementItem Name="">
+        <!-- extensibility element(s) -->
+
+       </tad:ElementItem>
+       <tad:ElementItem Name="">
+        <!-- extensibility element(s) -->
+
+       </tad:ElementItem>
+       <tad:Extension>
+        <!-- extensibility element(s) -->
+
+        <!-- extensibility element(s) -->
+
+       </tad:Extension>
+      </tad:Parameters>
+     </tad:MetadataConfig>
+     <tad:Extension>
+      <!-- extensibility element(s) -->
+
+      <!-- extensibility element(s) -->
+
+     </tad:Extension>
+    </tad:MetadataInput>
+    <!-- extensibility element(s) -->
+
+    <!-- extensibility element(s) -->
+
+   </tad:Configuration>
+  </tad:CreateAnalyticsEngineInputsResponse>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
