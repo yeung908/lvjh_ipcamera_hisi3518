@@ -1,0 +1,57 @@
+# Makefile for DVS901H
+# Copyright(C) 2005-2010 TaiTech Inc.
+
+# Cross Compile Tools
+CC 			:=  arm-hisiv100nptl-linux-gcc
+AR			:= arm-hisiv100nptl-linux-ar
+
+# Macro Of Platform
+CFLAGS		:= -DHI3511
+
+CFLAGS    += -D_GNU_SOURCE -D_REENTRANT 
+CFLAGS    += -DFLUSH_DISK
+CFLAGS    += -DSD_STORAGE
+
+# Macro Of Header
+
+# Macro Of Function
+#CFLAGS		+= -DNET_SDK_DEBUG
+
+# Macro Of Library
+LDFLAGS	:=
+
+# Object path configure
+OBJSPATH 	:= ./debug_HI3511
+OBJS 		:= $(wildcard $(OBJSPATH)/*.o)
+
+# Specific Rules
+.PHONY: all
+
+all:
+	$(if $(shell find $(OBJSPATH)), $(shell cd ./), $(shell mkdir $(OBJSPATH)))
+	
+	$(CC)   $(CFLAGS) -c fileDelete.c -o $(OBJSPATH)/fileDelete.o $(LDFLAGS)
+	$(CC)   $(CFLAGS) -c fileQuery.c -o $(OBJSPATH)/fileQuery.o $(LDFLAGS)
+	$(CC)   $(CFLAGS) -c fileIndex.c -o $(OBJSPATH)/fileIndex.o $(LDFLAGS)
+	$(CC)   $(CFLAGS) -c fileBak.c -o $(OBJSPATH)/fileBak.o $(LDFLAGS)
+	$(CC)   $(CFLAGS) -c indexFile.c -o $(OBJSPATH)/indexFile.o $(LDFLAGS)
+	$(CC)   $(CFLAGS) -c hardDisk.c -o $(OBJSPATH)/hardDisk.o $(LDFLAGS)
+	$(CC)   $(CFLAGS) -c util.c -o $(OBJSPATH)/util.o $(LDFLAGS)
+	$(CC)   $(CFLAGS) -c mp4File.c -o $(OBJSPATH)/mp4File.o $(LDFLAGS)
+	$(CC)   $(CFLAGS) -c fdisk.c -o $(OBJSPATH)/fdisk.o -DCONFIG_FEATURE_FDISK_WRITABLE $(LDFLAGS)
+	$(CC)   $(CFLAGS) -c hdPowerManage.c -o $(OBJSPATH)/hdPowerManage.o $(LDFLAGS)
+	$(CC)   $(CFLAGS) -c recordFile.c -o $(OBJSPATH)/recordFile.o $(LDFLAGS)
+	$(CC)   $(CFLAGS) -c recordCtrl.c -o $(OBJSPATH)/recordCtrl.o $(LDFLAGS)    
+	$(CC)   $(CFLAGS) -c sdCard.c -o $(OBJSPATH)/sdCard.o $(LDFLAGS)
+	$(CC)   $(CFLAGS) -c recordSDK.c -o $(OBJSPATH)/recordSDK.o $(LDFLAGS)
+	$(CC)   $(CFLAGS) -c indexFileExt.c -o $(OBJSPATH)/indexFileExt.o $(LDFLAGS)
+
+	$(AR) -rcs $(OBJSPATH)/librecordSDK.a $(OBJS) $(LDFLAGS)
+	
+	cp $(OBJSPATH)/*.a ../libs_HI3511/
+	
+clean: 
+	rm -f $(OBJSPATH)/*.o $(OBJSPATH)/*.a $(OBJSPATH)/*.out
+	rm -f *~
+	rmdir $(OBJSPATH)
+
