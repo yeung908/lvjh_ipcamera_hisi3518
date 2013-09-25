@@ -7,6 +7,7 @@
 int ONVIFStart()
 {
 	int ret = 0;
+	
 	ret = ONVIF_DiscoveryStart();
 	if(ret < 0)
 	{

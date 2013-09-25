@@ -534,8 +534,8 @@ int HttpParse(struct Http_Buffer *pBuf)
 			return pBuf->error = 405;
 	}
 	/* Status OK (HTTP 200) */
-	printf("Http parse OK,pBuf->nBufLen:%d,pBuf->nHeaderLen:%d,pBuf->length:%d,pBuf->action:%s\n",
-		pBuf->nBufLen,pBuf->headerlen,pBuf->length,pBuf->action);
+	//printf("Http parse OK,pBuf->nBufLen:%d,pBuf->nHeaderLen:%d,pBuf->length:%d,pBuf->action:%s\n",
+	//	pBuf->nBufLen,pBuf->headerlen,pBuf->length,pBuf->action);
 	if (pBuf->status == 0 || pBuf->status == 200)
 	 	return SOAP_OK;
 	return pBuf->error;

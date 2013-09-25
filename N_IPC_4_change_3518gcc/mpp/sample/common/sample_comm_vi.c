@@ -960,12 +960,16 @@ HI_S32 SAMPLE_COMM_VI_StartIsp(SAMPLE_VI_CONFIG_S* pstViConfig)
      step 1: configure sensor.
      note: you can jump over this step, if you do not use Hi3518 interal isp. 
     ******************************************/
+    printf(" __func__ %s, __LINE__ %d\n", __func__, __LINE__);
+	
     s32Ret = SAMPLE_COMM_ISP_SensorInit();
     if (HI_SUCCESS != s32Ret)
     {
         SAMPLE_PRT("%s: Sensor init failed!\n", __FUNCTION__);
         return HI_FAILURE;
     }
+	printf(" __func__ %s, __LINE__ %d\n", __func__, __LINE__);
+		
 
     /******************************************************
      step 2 : config & start vicap dev

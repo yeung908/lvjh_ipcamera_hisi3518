@@ -2096,6 +2096,7 @@ int videoEncModuleStartup(videoSendFun_t bitratevideoSendFunc, videoSendFun_t jp
 	#endif
 	//ret = hi3511VideoStart();
 	SAMPLE_VENC_720P_CLASSIC();
+	//GetVideoStream(0);
 	//videoEncModuleStart();
 	printf("%s %d&&&&\n", __func__, __LINE__);
 	

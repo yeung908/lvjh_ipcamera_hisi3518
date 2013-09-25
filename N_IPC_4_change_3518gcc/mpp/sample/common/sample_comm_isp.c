@@ -433,6 +433,8 @@ HI_S32 SAMPLE_COMM_ISP_SensorInit(void)
 
     /* 0: linear mode, 1: WDR mode */
     sensor_mode_set(0);
+	setup_sensor(0);
+	
 
     /* 2. sensor register callback */
     s32Ret = sensor_register_callback();
@@ -442,6 +444,7 @@ HI_S32 SAMPLE_COMM_ISP_SensorInit(void)
                __FUNCTION__, s32Ret);
         return s32Ret;
     }
+	
     return HI_SUCCESS;
 }
 

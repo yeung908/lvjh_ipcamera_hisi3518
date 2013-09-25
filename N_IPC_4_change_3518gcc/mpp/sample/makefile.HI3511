@@ -13,6 +13,7 @@ all:
 	@cd tde;    make
 	$(AR) -rcs $(OBJSPATH)/libcommon.a $(OBJS) $(LDFLAGS)
 	@cp $(OBJSPATH)/*.a ../../libs_HI3511/
+	@cp $(OBJSPATH)/*.a ../lib/
 	@cp $(OBJSPATH)/*.o ../../debug_HI3511/
 	
 

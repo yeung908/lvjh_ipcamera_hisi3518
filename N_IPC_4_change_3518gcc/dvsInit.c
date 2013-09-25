@@ -1349,12 +1349,23 @@ int CGI_Proc_Start()
 	return 0;
 }
 
+void Stop(int signo) 
+{
+    printf("oops! stop!!!\n");
+    exit(0);
+}
+
+
+
 int dvsInit()
 {
 	int ret = -1;
 	int i = 0;
 	NTP_PARAM ntpParam;
 	AUDIO_PATH_PARAM audioPath;
+
+
+	signal(SIGINT, Stop); 
 
 	// 初始最大音视频通道数
 	set_channel_num(MAX_CHANNEL);

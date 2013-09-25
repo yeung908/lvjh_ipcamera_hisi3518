@@ -138,7 +138,7 @@ HI_S32 SAMPLE_VENC_720P_CLASSIC(HI_VOID)
     ******************************************/
     stViConfig.enViMode   = SENSOR_TYPE;
     stViConfig.enRotate   = ROTATE_NONE;
-    stViConfig.enNorm     = VIDEO_ENCODING_MODE_AUTO;
+    stViConfig.enNorm     = VIDEO_ENCODING_MODE_PAL;
     stViConfig.enViChnSet = VI_CHN_SET_NORMAL;
     s32Ret = SAMPLE_COMM_VI_StartVi(&stViConfig);
     if (HI_SUCCESS != s32Ret)
@@ -655,6 +655,38 @@ END_VENC_SNAP_0:	//system exit
     
     return s32Ret;
 }
+
+int GetVideoStream(int mode)
+{
+    HI_S32 s32Ret;
+ 
+    signal(SIGINT, SAMPLE_VENC_HandleSig);
+    signal(SIGTERM, SAMPLE_VENC_HandleSig);
+    
+    switch (mode)
+    {
+        case '0':/* H.264@720p@30fps+H.264@VGA@30fps+H.264@QVGA@30fps */
+            s32Ret = SAMPLE_VENC_720P_CLASSIC();
+            break;
+        case '1':/* 1*720p mjpeg encode */
+            s32Ret = SAMPLE_VENC_720P_MJPEG();
+            break;
+        case '2':/* 1*720p JPEG snap */
+            s32Ret = SAMPLE_VENC_720P_Snap();
+            break;
+        default:
+            printf("the index is invaild!\n");
+            SAMPLE_VENC_Usage("GetVideoStream");
+            return HI_FAILURE;
+    }
+    
+    if (HI_SUCCESS == s32Ret)
+        printf("program exit normally!\n");
+    else
+        printf("program exit abnormally!\n");
+    exit(s32Ret);
+}
+
 
 
 /******************************************************************************

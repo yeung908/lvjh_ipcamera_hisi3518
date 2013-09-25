@@ -62,6 +62,7 @@ $(TARGETLIB):$(OBJS)
 	@mkdir -p $(LIBPATH)
 	@($(AR) $(ARFLAGS) $(TARGETLIB) $(OBJS))
 	@($(CC) $(ARFLAGS_SO) $(TARGETLIB_SO) $(OBJS))
+	@cp $(TARGETLIB)  $REL_LIB
 
 
 clean:

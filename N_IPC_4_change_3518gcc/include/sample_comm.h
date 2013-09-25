@@ -287,6 +287,9 @@ HI_S32 SAMPLE_COMM_AUDIO_StopAenc(HI_S32 s32AencChnCnt);
 HI_S32 SAMPLE_COMM_AUDIO_StartAdec(ADEC_CHN AdChn, PAYLOAD_TYPE_E enType);
 HI_S32 SAMPLE_COMM_AUDIO_StopAdec(ADEC_CHN AdChn);
 
+int GetVideoStream(int mode);
+
+
 #ifdef __cplusplus
 #if __cplusplus
 }

@@ -3,6 +3,7 @@
 #include <memory.h>
 #include <string.h>
 #include <errno.h>
+#include <signal.h>
 #ifndef _WIN32
 #include <arpa/inet.h>
 #include <netinet/tcp.h>
@@ -850,6 +851,183 @@ int BuildSetImagingSettingsConfigureString(char *sBuffer,char *sStreamBrightness
 	return strlen(sBuffer);
 }
 
+int BuildGetSystemDateAndTimeConfigureString(char *sBuffer,char *sStreamString,struct Namespace *pNameSpace)
+{
+	int nLen;
+	char TmpBuffer[1024];
+	char localIP[16];
+	DATE_PARAM param;
+	int ret = 0;
+	int i = 0;
+	nLen = sprintf(sBuffer,"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+	BuildDevInfoHeaderString(sBuffer+nLen,pNameSpace);
+
+
+	memset(&param, 0, sizeof(DATE_PARAM));
+	ret = getSystemTimeExt(&param.year, &param.month, &param.day, &param.week, &param.hour, &param.minute, &param.second);
+	if (ret < 0)
+	{
+		return -1;
+	}
+	//start soap-env body
+	strcat(sBuffer,"<SOAP-ENV:Body>");
+	strcat(sBuffer,"<tds:GetSystemDateAndTimeResponse>");
+	sprintf(TmpBuffer,"<tds:SystemDateAndTime>");
+	strcat(sBuffer,TmpBuffer);
+	strcat(sBuffer, "<tds:DateTimeType>Manual</tds:DateTimeType>");
+	strcat(sBuffer, "<tds:DaylightSavings>false</tds:DaylightSavings>");
+	strcat(sBuffer, "<tds:TimeZone><tds:TZ></tds:TZ></tds:TimeZone>");
+
+#if 1
+	//填充UTC 时间参数
+	sprintf(TmpBuffer, "%s%d%s", "<tds:UTCDateTime><tds:Time><tds:Hour>", param.hour, "</tds:Hour>");
+	strcat(sBuffer,TmpBuffer);
+	sprintf(TmpBuffer, "%s%d%s", "<tds:Minute>", param.minute, "</tds:Minute>");
+	strcat(sBuffer,TmpBuffer);
+	sprintf(TmpBuffer, "%s%d%s%s", "<tds:Second>", param.second, "</tds:Second>", "</tds:Time>");
+	strcat(sBuffer,TmpBuffer);
+
+	//填充UTC 日期参数
+	sprintf(TmpBuffer, "%s%s%d%s", "<tds:Date>", "<tds:Year>", param.year, "</tds:Year>");
+	strcat(sBuffer,TmpBuffer);
+	sprintf(TmpBuffer, "%s%d%s", "<tds:Month>", param.month, "</tds:Month>");
+	strcat(sBuffer,TmpBuffer);
+	sprintf(TmpBuffer, "%s%d%s%s", "<tds:Day>", param.day, "</tds:Day>", "</tds:Date> </tds:UTCDateTime>");
+	strcat(sBuffer,TmpBuffer);
+#endif
+
+	//填充LOCAL 时间参数
+	sprintf(TmpBuffer, "%s%d%s", "<tds:LocalDateTime><tds:Time><tds:Hour>", param.hour, "</tds:Hour>");
+	strcat(sBuffer,TmpBuffer);
+	sprintf(TmpBuffer, "%s%d%s", "<tds:Minute>", param.minute, "</tds:Minute>");
+	strcat(sBuffer,TmpBuffer);
+	sprintf(TmpBuffer, "%s%d%s%s", "<tds:Second>", param.second, "</tds:Second>", "</tds:Time>");
+	strcat(sBuffer,TmpBuffer);
+
+	//填充LOCAL 日期参数
+	sprintf(TmpBuffer, "%s%s%d%s", "<tds:Date>", "<tds:Year>", param.year, "</tds:Year>");
+	strcat(sBuffer,TmpBuffer);
+	sprintf(TmpBuffer, "%s%d%s", "<tds:Month>", param.month, "</tds:Month>");
+	strcat(sBuffer,TmpBuffer);
+	sprintf(TmpBuffer, "%s%d%s%s", "<tds:Day>", param.day, "</tds:Day>", "</tds:Date> </tds:LocalDateTime>");
+	strcat(sBuffer,TmpBuffer);
+	
+	strcat(sBuffer,"</tds:SystemDateAndTime>");
+	strcat(sBuffer,"</tds:GetSystemDateAndTimeResponse>");
+	strcat(sBuffer,"</SOAP-ENV:Body>");
+	strcat(sBuffer,"</SOAP-ENV:Envelope>\r\n");
+	return strlen(sBuffer);
+}
+
+
+int BuildSetSystemDateAndTimeConfigureString(char *sBuffer,char *sStreamString,struct Namespace *pNameSpace, const struct Http_Buffer *pBuf)
+{
+	int nLen;
+	int ret = 0;
+	DATE_PARAM param;
+
+	char strHour[10]={0};
+	char strMinute[10]={0};
+	char strSecod[10]={0};
+	char strYear[10]={0};
+	char strMonth[10]={0};
+	char strDay[10]={0};
+		
+	nLen = sprintf(sBuffer,"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+	BuildDevInfoHeaderString(sBuffer+nLen,pNameSpace);
+	printf("pBuf->Buffer+pBuf->headerlen = %s\n", pBuf->Buffer+pBuf->headerlen);
+
+	memset(&param, 0, sizeof(DATE_PARAM));
+	XmlGetStringValue(pBuf->Buffer+pBuf->headerlen,"Hour",strHour,1024);
+	XmlGetStringValue(pBuf->Buffer+pBuf->headerlen,"Minute",strMinute,1024);
+	XmlGetStringValue(pBuf->Buffer+pBuf->headerlen,"Second",strSecod,1024);
+	XmlGetStringValue(pBuf->Buffer+pBuf->headerlen,"Year",strYear,1024);
+	XmlGetStringValue(pBuf->Buffer+pBuf->headerlen,"Month",strMonth,1024);
+	XmlGetStringValue(pBuf->Buffer+pBuf->headerlen,"Day",strDay,1024);
+
+
+	printf("%s%s%s\n", strHour, strMinute, strSecod);
+
+	param.hour = atoi(strHour);
+	param.minute = atoi(strMinute);
+	param.second = atoi(strSecod);
+	param.year  = atoi(strYear);
+	param.month = atoi(strMonth);
+	param.minute= atoi(strMinute);
+
+	ret = setSystemTime(param.year, param.month, param.day, param.hour, param.minute, param.second);
+	if (ret < 0)
+	{
+		return -1;
+	}
+	//start soap-env body
+	strcat(sBuffer,"<SOAP-ENV:Body>");
+	strcat(sBuffer,"<timg:SetSystemDateAndTimeResponse>");
+	strcat(sBuffer,"</timg:SetSystemDateAndTimeResponse>");
+	strcat(sBuffer,"</SOAP-ENV:Body>");
+	strcat(sBuffer,"</SOAP-ENV:Envelope>\r\n");
+	return strlen(sBuffer);
+}
+
+
+
+int BuildGetCertificatesResponseConfigureString(char *sBuffer,char *sStreamString,struct Namespace *pNameSpace)
+{
+	int nLen;
+	char TmpBuffer[1024];
+	char localIP[16];
+	DATE_PARAM param;
+	int ret = 0;
+	int i = 0;
+	nLen = sprintf(sBuffer,"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+	BuildDevInfoHeaderString(sBuffer+nLen,pNameSpace);
+
+	memset(&param, 0, sizeof(DATE_PARAM));
+	ret = getSystemTimeExt(&param.year, &param.month, &param.day, &param.week, &param.hour, &param.minute, &param.second);
+	if (ret < 0)
+	{
+		return -1;
+	}
+
+	//start soap-env body
+	strcat(sBuffer,"<SOAP-ENV:Body>");
+	strcat(sBuffer,"<tds:GetCertificatesResponse>");
+	strcat(sBuffer,"<tds:NvtCertificate>");
+	strcat(sBuffer,"<tds:CertificateID></tds:CertificateID>");
+	strcat(sBuffer,"<tds:Certificate xmime:contentType="">");
+	strcat(sBuffer,"<tds:Data></tds:Data>");
+
+	strcat(sBuffer,"</tds:Certificate>");
+	strcat(sBuffer,"</tds:NvtCertificate>");
+	strcat(sBuffer,"</tds:GetCertificatesResponse>");
+	strcat(sBuffer,"</SOAP-ENV:Body>");
+	strcat(sBuffer,"</SOAP-ENV:Envelope>\r\n");
+	return strlen(sBuffer);
+}
+
+
+ int BuildGetCertificatesStatusResponseConfigureString(char *sBuffer,char *sStreamString,struct Namespace *pNameSpace)
+ {
+	 int nLen;
+	 char TmpBuffer[1024];
+	 int ret = 0;
+	 nLen = sprintf(sBuffer,"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+	 BuildDevInfoHeaderString(sBuffer+nLen,pNameSpace);
+ 
+	 //start soap-env body
+	 strcat(sBuffer,"<SOAP-ENV:Body>");
+	 strcat(sBuffer,"<tds:GetCertificatesStatusResponse>");
+	 strcat(sBuffer,"<tds:CertificateStatus>");
+	 strcat(sBuffer,"<tds:CertificateID></tds:CertificateID>");
+	 strcat(sBuffer,"<tds:Status>false</tds:Status>");
+	 
+	 strcat(sBuffer,"</tds:CertificateStatus>");
+	 strcat(sBuffer,"</tds:GetCertificatesStatusResponse>");
+	 strcat(sBuffer,"</SOAP-ENV:Body>");
+	 strcat(sBuffer,"</SOAP-ENV:Envelope>\r\n");
+	 return strlen(sBuffer);
+ }
+
 
 int BuildGetOptionsConfigureString(char *sBuffer,char *sStreamString,struct Namespace *pNameSpace)
 {
@@ -1117,6 +1295,63 @@ void ProcessAction(const struct Http_Buffer *pBuf,int sock)
 			strcat(TmpBuf2,TmpBuf);
 			send(sock,TmpBuf2,nLen + nLen2,0);
 		}
+		/*网络参数设置*/
+		else if(XmlContainString(pBuf->action,"GetRelayOutputs"))
+		{
+			ptzCmd.nCmd = LEFT_STOP;
+			ptzControl(0, ptzCmd);
+			nLen = BuildwsdlGetProfileString(TmpBuf,devinfo_namespaces);//WsdlGetProfile_namespaces);
+			nLen2 = BuildHttpHeaderString(pBuf,TmpBuf2,nLen);
+			strcat(TmpBuf2,TmpBuf);
+			send(sock,TmpBuf2,nLen + nLen2,0);
+		}
+		/*系统时间设置*/
+		else if(XmlContainString(pBuf->action,"GetSystemDateAndTime"))
+		{
+			char strStream[1024]="0_VSC";
+			nLen = BuildGetSystemDateAndTimeConfigureString(TmpBuf,strStream,devinfo_namespaces);//GetVideoSourceConfiguration_namespaces);
+			nLen2 = BuildHttpHeaderString(pBuf,TmpBuf2,nLen);
+			strcat(TmpBuf2,TmpBuf);
+			send(sock,TmpBuf2,nLen + nLen2,0);
+			printf("TmpBuf2 = %s\n", TmpBuf2);
+		}
+
+		else if(XmlContainString(pBuf->action,"SetSystemDateAndTime"))
+		{
+			char strStream[1024]="0_VSC";
+			nLen = BuildSetSystemDateAndTimeConfigureString(TmpBuf,strStream,devinfo_namespaces, pBuf);//GetVideoSourceConfiguration_namespaces);
+			nLen2 = BuildHttpHeaderString(pBuf,TmpBuf2,nLen);
+			strcat(TmpBuf2,TmpBuf);
+			send(sock,TmpBuf2,nLen + nLen2,0);
+			printf("TmpBuf2 = %s\n", TmpBuf2);
+		}
+
+		//CertificatesResponse
+
+		else if(XmlContainString(pBuf->action,"GetCertificatesStatus"))
+		{
+			char strStream[1024]="0_VSC";
+			nLen = BuildGetCertificatesStatusResponseConfigureString(TmpBuf,strStream,devinfo_namespaces);//GetVideoSourceConfiguration_namespaces);
+			nLen2 = BuildHttpHeaderString(pBuf,TmpBuf2,nLen);
+			strcat(TmpBuf2,TmpBuf);
+			send(sock,TmpBuf2,nLen + nLen2,0);
+			printf("okk\n");
+			return 0;
+//			printf("TmpBuf2 = %s\n", TmpBuf2);
+		}
+		
+		else if(XmlContainString(pBuf->action,"GetCertificates"))
+		{
+			char strStream[1024]="0_VSC";
+			nLen = BuildGetCertificatesResponseConfigureString(TmpBuf,strStream,devinfo_namespaces);//GetVideoSourceConfiguration_namespaces);
+			nLen2 = BuildHttpHeaderString(pBuf,TmpBuf2,nLen);
+			strcat(TmpBuf2,TmpBuf);
+			send(sock,TmpBuf2,nLen + nLen2,0);
+			printf("two okk\n");
+			return 0;
+			//printf("TmpBuf2 = %s\n", TmpBuf2);
+		}
+	
 		else
 		{
 			printf("::ProcessAction COMMAND %s\n", pBuf->action);
@@ -1233,6 +1468,16 @@ int ONVIFNewConnect(int hsock,struct sockaddr_in *pAddr)
 	}
 	return 0;
 }
+int hListenSock = -1;
+
+
+void stop_sock(int signo) 
+{
+	printf("oops! hListenSock stop!!!\n");
+	close(hListenSock);
+	exit(0);
+}
+
 
 int ONVIF_ServiceThread()
 {
@@ -1240,7 +1485,7 @@ int ONVIF_ServiceThread()
 	int len = 0;
 	int opt;
 	int hConnSock = -1;
-	int hListenSock = -1;
+	//int hListenSock = -1;
 	fd_set fset;
 	struct timeval to;
 	struct sockaddr_in addr;
@@ -1274,6 +1519,7 @@ int ONVIF_ServiceThread()
 		pthread_exit(NULL);
 		return ret;
 	}
+	
 	while(g_OnvifServiceRunning)
 	{
 		hConnSock = -1;
@@ -1326,6 +1572,8 @@ int ONVIF_ServiceStart()
 {
 	int ret;
 	g_OnvifServiceRunning = 1;
+	//signal(SIGINT, stop_sock); 
+	
 	ret = pthread_create(&g_OnvifServer.hServiceThread,NULL,(void *)&ONVIF_ServiceThread,NULL);
 	if(ret < 0)
 	{

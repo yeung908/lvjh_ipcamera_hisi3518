@@ -207,14 +207,14 @@ HI_S32 SAMPLE_COMM_VENC_SaveH264(FILE* fpH264File, VENC_STREAM_S *pstStream)
         fwrite(pstStream->pstPack[i].pu8Addr[0],
                pstStream->pstPack[i].u32Len[0], 1, fpH264File);
 
-        fflush(fpH264File);
+      //  fflush(fpH264File);
 
         if (pstStream->pstPack[i].u32Len[1] > 0)
         {
             fwrite(pstStream->pstPack[i].pu8Addr[1],
                    pstStream->pstPack[i].u32Len[1], 1, fpH264File);
 
-            fflush(fpH264File);
+        //    fflush(fpH264File);
         }
     }
     
@@ -877,7 +877,6 @@ HI_VOID* SAMPLE_COMM_VENC_GetVencStreamProc(HI_VOID *p)
             return NULL;
         }
         sprintf(aszFileName[i], "/mnt/mtd/dvs/mobile/tmpfs/ch%d.264", i);
-		//printf("aszFileName[i] = %s \n", aszFileName[i]);
 		if (access(CHN0_SOUR, F_OK) == -1) {
 				if ( mkfifo(CHN0_SOUR, 0777) != 0) {
 				return -1;

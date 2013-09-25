@@ -241,7 +241,7 @@ void sensor_init()
 
 	delay_ms(200);	//DELAY= 200
 
-	printf("Aptina AR0130 sensor 720P30fps init success!\n");
+	printf("*Aptina AR0130 sensor 720P30fps init success!!!\n\n");
 	
 }
 

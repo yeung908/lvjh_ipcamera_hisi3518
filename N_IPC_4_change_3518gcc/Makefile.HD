@@ -15,7 +15,7 @@ MPP_INSTALL_PATH			:= /usr/local/hi3511/Hi3511_VSSDK_
 
 # Macro of Media Library
 LIB3512_PATH	:= $(MPP_INSTALL_PATH)$(MPP_VERSION)/mpp/lib.rel
-LIBS 		:=	$(LIB3512_PATH)/libmpi_3512.a \
+LIBS 		:=	$(LIB3512_PATH)/libmpi.a \
 				$(LIB3512_PATH)/lib_VoiceEngine.a \
  				$(LIB3512_PATH)/lib_amr_spc.a \
 				$(LIB3512_PATH)/lib_amr_fipop.a \
@@ -25,17 +25,17 @@ LIBS 		:=	$(LIB3512_PATH)/libmpi_3512.a \
 				$(LIB3512_PATH)/lib_aacdec.a \
 				$(LIB3512_PATH)/lib_aacenc.a \
 				
-LIB3518_PATH	:= /opt/yiview/work/Hi3518C_V100R001C01SPC040/01.software/board/Hi3518_SDK_V1.0.4.0/mpp/lib
+LIB3518_PATH	:= ./mpp/lib
 LIBS 		:=	$(LIB3518_PATH)/libmpi.a \
 				$(LIB3518_PATH)/libaec.a \
 				$(LIB3518_PATH)/libtde.a \
 				$(LIB3518_PATH)/libisp.a \
-				//$(LIB3518_PATH)/libsns_ov9712.a \
-				//$(LIB3518_PATH)/libsns_9m034.a\
 				$(LIB3518_PATH)/libsns_ar0130_720p.a\
 				$(LIB3518_PATH)/libanr.a \
 				$(LIB3518_PATH)/libVoiceEngine.a \
 				$(LIB3518_PATH)/libresampler.a \
+				$(LIB3518_PATH)/libcommon.a \
+				
 												
 			#	$(LIB_PATH)/lib_aacdec.a \
 			#	$(LIB_PATH)/lib_aacenc.a \

@@ -87,7 +87,8 @@ endif
 # Get the local SDK_ROOT path or RELEASE_ROOT path by PARAM_FILE.
 # PARAM_FILE is configed at Makefile before include this file
 export PARAM_FILE
-export SDK_PATH?=$(shell cd $(PWD)/`dirname $(PARAM_FILE)`/..; pwd)
+#export SDK_PATH?=$(shell cd $(PWD)/`dirname $(PARAM_FILE)`/..; pwd)
+export SDK_PATH?=/mnt/share_windows/gitipc/lvjh_ipcamera_hisi3518/N_IPC_4_change_3518gcc
 
 # Allocated the linux position
 export DRV_ROOT?=$(SDK_PATH)/drv
